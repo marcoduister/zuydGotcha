@@ -1,0 +1,57 @@
+﻿@model IEnumerable<zuydGotcha.Models.User>
+
+@{
+    ViewBag.Title = "Gebruikers Overzicht";
+}
+
+<h2>Index</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Account.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Account.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rol)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserActive)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Account.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Account.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+            
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rol)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserActive)
+        </td>
+        <td>
+            @Html.ActionLink("Accept", "Accept", new { id = item.Id }) |
+            @Html.ActionLink("inzien", "Details", new { id = item.Id }) |
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+        </td>
+    </tr>
+}
+
+</table>

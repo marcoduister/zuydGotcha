@@ -1,0 +1,176 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+</head>
+<body>
+
+
+    <div>
+        <Header class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand col-md-3 col-lg-2 bg-dark text-white px-3" href="#">Gotcha</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link active" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("About", "About", "Home", null, new { @class = "nav-link" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link" })
+                        </li>
+                    </ul>
+                    @if (Session["UserID"] == null)
+                    {
+                        <div class="nav-item">
+                            <div class="text-end">
+                                @Html.ActionLink("Login", "Login", "Access", null, new { @class = "btn btn-outline-light me-2" })
+                                @Html.ActionLink("Registreren", "Register", "Access", null, new { @class = "btn btn-warning" })
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-person-circle">
+
+                                </i>
+                            </a>
+                            <ul class="dropdown-menu " aria-labelledby="Account">
+                                <li>
+                                    @Html.ActionLink("Logout", "Logout", "Access", null, new { @class = "dropdown-item" })
+                                </li>
+                                <li><a class="dropdown-item" href="#">Profile</a></li>
+                            </ul>
+                        </div>
+                    }
+
+                </div>
+            </div>
+            <!-- Sidebar -->
+
+
+
+        </Header>
+
+        @if (Session["UserID"] != null)
+        {
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
+                <div class="position-sticky pt-5">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">
+                                <i class="bi bi-person-circle"></i>
+                                Dashboard
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index", "Spellen")" class="nav-link">
+                                <i class="bi bi-joystick"></i>
+                                Spellen
+                            </a>
+                        </li>
+
+
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="collapse" href="#" data-bs-target="#DropdownRegels">
+                                <i class="bi bi-receipt-cutoff"></i>
+                                Regels
+                            </a>
+                            <div class="collapse" id="DropdownRegels">
+                                <ul class="nav flex-column ps-4">
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" aria-current="page" href="#">
+                                            <i class="bi bi-receipt-cutoff"></i>
+                                            Regel's
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" aria-current="page" href="#">
+                                            <i class="bi bi-receipt"></i>
+                                            RegelSet's
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="collapse" href="#" data-bs-target="#DropdownWoorden">
+                                <i class="bi bi-journal-text"></i>
+                                Woorden
+                            </a>
+                            <div class="collapse" id="DropdownWoorden">
+                                <ul class="nav flex-column ps-4">
+                                    <li class="nav-item">
+                                        <a class="nav-link" aria-current="page" href="#">
+                                            <i class="bi bi-journal-richtext"></i>
+                                            Woorden
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" aria-current="page" href="#">
+                                            <i class="bi bi-journals"></i>
+                                            WoordenSet
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index", "GameTypes")" class="nav-link">
+                                <i class="bi bi-ui-checks"></i>
+                                GameTypes
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index", "Users")" class="nav-link">
+                                <i class="bi bi-people-fill"></i>
+                                Gebruikers
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+        }
+
+    </div>
+    
+
+    <div class="container-fluid pt-5">
+        <div class="row">
+            <main class="col-md-9  ms-sm-auto col-lg-10 px-md-4">
+
+                @RenderBody()
+
+
+                <hr />
+                <footer>
+                    <p>&copy; @DateTime.Now.Year - Gotcha@Zuyd</p>
+                </footer>
+
+            </main>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+
+</body>
+</html>
