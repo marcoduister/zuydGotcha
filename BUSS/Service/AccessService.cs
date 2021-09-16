@@ -33,7 +33,6 @@ namespace BUSS.Service
         {
             if (!DBContext.Users.Any(e =>e.Email == Adduser.Email))
             {
-                
                 DBContext.Users.Add(Adduser);
                 DBContext.SaveChanges();
                 return true;

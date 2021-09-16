@@ -90,7 +90,6 @@ namespace zuydGotcha.Controllers
                         Account = AddAccount
                     };
 
-
                     if (_AccessService.Register(Adduser))
                     {
                         return RedirectToAction("Login", "Access");
@@ -98,14 +97,12 @@ namespace zuydGotcha.Controllers
                     else
                     {
                         ModelState.AddModelError(nameof(NewUser.Email), "Email is al in gebruik!!");
-
                     }
                 }
                 else
                 {
                     ModelState.AddModelError(nameof(NewUser.PasswordCheck), "De wachtworden komen niet over een met elkaar");
                 }
-                
             }
 
             return View(NewUser);
@@ -124,7 +121,7 @@ namespace zuydGotcha.Controllers
         {
             if (ModelState.IsValid)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Login");
             }
 
             return View(user);
