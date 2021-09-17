@@ -47,7 +47,7 @@ namespace zuydGotcha.Controllers
                     Session["UserID"] = currentUser.Id.ToString();
                     Session["UserEmail"] = currentUser.Email.ToString();
                     Session["UserName"] = currentUser.Account.FirstName + " " + currentUser.Account.LastName.ToString();
-                    Session["UserRole"] = currentUser.Rol.ToString();
+                    Session["UserRole"] = currentUser.User_Rol.ToString();
 
 
                     return RedirectToAction("Index", "Home");
@@ -78,7 +78,7 @@ namespace zuydGotcha.Controllers
                         FirstName = NewUser.FirstName,
                         LastName = NewUser.LastName,
                         Alias = NewUser.Alias,
-                        Groep = NewUser.Groep,
+                        Group = NewUser.Groep,
                         Birthdate = DateTime.Now,
                         ProfileImage = bytes
                     };
@@ -86,7 +86,7 @@ namespace zuydGotcha.Controllers
                     {
                         Email = NewUser.Email,
                         Password = NewUser.Password,
-                        Rol = Enums.Rolen.Player,
+                        User_Rol = Enums.Rolen.Player,
                         Account = AddAccount
                     };
 

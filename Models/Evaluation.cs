@@ -1,25 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace zuydGotcha.Models
+namespace Models
 {
-    public class Contract
+    public class Evaluation
     {
         //Atributte/property
         [Key]
         public int Id { get; set; }
-        public int Game_Id { get; set; }
+
+        public int Points { get; set; }
+
+        public string Game_Review { get; set; }
+
+        [ForeignKey("User")]
         public int User_Id { get; set; }
-        public int? Word_Id { get; set; }
-        public DateTime? EliminatedTime { get; set; }
-        public int Eliminations { get; set; }
+
+        [ForeignKey("Game")]
+        public int Game_Id { get; set; }
 
         //Relations
-        public virtual Game Game { get; set; }
         public virtual User User { get; set; }
+        public virtual Game Game { get; set; }
     }
 }

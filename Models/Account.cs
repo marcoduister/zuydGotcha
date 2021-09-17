@@ -18,10 +18,12 @@ namespace Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Alias { get; set; }
-        public string Groep { get; set; }
+        public string Group { get; set; }
         public DateTime Birthdate { get; set; }
         public byte[] ProfileImage { get; set; }
+        public string Residence { get; set; }
 
+        //Relations
         public virtual User User { get; set; }
     }
 }

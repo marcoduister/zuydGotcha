@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,8 +18,14 @@ namespace Models
         //Atributte/property
         [Key]
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
+
+        public string Rule_Name { get; set; }
+
+        public string Rule_Description { get; set; }
+
+        public Boolean Rule_public { get; set; }
+
+        [ForeignKey("User")]
         public int Maker_Id { get; set; }
 
         //Relations

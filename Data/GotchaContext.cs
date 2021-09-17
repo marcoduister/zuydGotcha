@@ -31,10 +31,23 @@ namespace Data
         {
             //modelBuilder.Configurations.Add(new AccountMap());
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
 
             modelBuilder.Entity<User>()
                 .HasOptional(s => s.Account)
                 .WithRequired(ad => ad.User);
+
+            modelBuilder.Entity<Contract>()
+                    .HasRequired(m => m.GamePlayer_Eliminate)
+                    .WithMany(t => t.Contract_Eliminate)
+                    .HasForeignKey(m => m.Eliminate_Id)
+                    .WillCascadeOnDelete(false);
+            modelBuilder.Entity<Contract>()
+                    .HasRequired(m => m.GamePlayer_Eliminator)
+                    .WithMany(t => t.Contract_Eliminators)
+                    .HasForeignKey(m => m.Eliminator_Id);
+
         }
     }
 }

@@ -99,9 +99,9 @@
   <ItemGroup>
     <Compile Include="GotchaContext.cs" />
     <Compile Include="GotchaInitializer.cs" />
-    <Compile Include="Migrations\202109151140237_initial.cs" />
-    <Compile Include="Migrations\202109151140237_initial.Designer.cs">
-      <DependentUpon>202109151140237_initial.cs</DependentUpon>
+    <Compile Include="Migrations\202109171849128_initial.cs" />
+    <Compile Include="Migrations\202109171849128_initial.Designer.cs">
+      <DependentUpon>202109171849128_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -117,8 +117,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202109151140237_initial.resx">
-      <DependentUpon>202109151140237_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202109171849128_initial.resx">
+      <DependentUpon>202109171849128_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
