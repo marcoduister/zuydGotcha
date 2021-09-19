@@ -121,8 +121,11 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccessController.cs" />
+    <Compile Include="Controllers\GametypeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RulesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Controllers\WordsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -132,6 +135,19 @@
     <Compile Include="ViewModels\Access\LoginViewModel.cs" />
     <Compile Include="ViewModels\Access\PasswordResetViewModel.cs" />
     <Compile Include="ViewModels\Access\RegisterViewModel.cs" />
+    <Compile Include="ViewModels\Gametypes\AddGametypeViewModel.cs" />
+    <Compile Include="ViewModels\Gametypes\OverviewGametype.cs" />
+    <Compile Include="ViewModels\Gametypes\EditGametypeViewModel.cs" />
+    <Compile Include="ViewModels\Rules\AddRulesetViewModel.cs" />
+    <Compile Include="ViewModels\Rules\AddRuleViewModel.cs" />
+    <Compile Include="ViewModels\Rules\EditRulesetViewModel.cs" />
+    <Compile Include="ViewModels\Rules\EditRuleViewModel.cs" />
+    <Compile Include="ViewModels\Rules\OverviewRulesetsViewModel.cs" />
+    <Compile Include="ViewModels\Words\AddWordsetViewModel.cs" />
+    <Compile Include="ViewModels\Words\AddWordViewModel.cs" />
+    <Compile Include="ViewModels\Words\EditWordsetViewModel.cs" />
+    <Compile Include="ViewModels\Words\EditWordViewModel.cs" />
+    <Compile Include="ViewModels\Words\OverviewWordsetsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Content\bootstrap-grid.css" />
@@ -210,9 +226,23 @@
     <None Include="packages.config" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Gametype\AddGametype.cshtml" />
+    <Content Include="Views\Gametype\EditGametype.cshtml" />
+    <Content Include="Views\Gametype\OverviewGametype.cshtml" />
+    <Content Include="Views\Rules\AddRule.cshtml" />
+    <Content Include="Views\Rules\EditRule.cshtml" />
+    <Content Include="Views\Rules\OverviewRulesets.cshtml" />
+    <Content Include="Views\Rules\AddRuleset.cshtml" />
+    <Content Include="Views\Rules\EditRuleset.cshtml" />
+    <Content Include="Views\Words\AddWord.cshtml" />
+    <Content Include="Views\Words\EditWord.cshtml" />
+    <Content Include="Views\Words\OverviewWordsets.cshtml" />
+    <Content Include="Views\Words\AddWordset.cshtml" />
+    <Content Include="Views\Words\EditWordset.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ViewModels\User\" />
+    <Folder Include="Views\AddGametypeViewModel\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BUSS\BUSS.csproj">
