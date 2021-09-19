@@ -45,6 +45,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\BUSS\bin\Debug\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -121,6 +125,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccessController.cs" />
+    <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -128,10 +133,14 @@
     </Compile>
     <Compile Include="Helper\CheckAge.cs" />
     <Compile Include="Helper\CheckAuth.cs" />
+    <Compile Include="Helper\Mapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Access\LoginViewModel.cs" />
     <Compile Include="ViewModels\Access\PasswordResetViewModel.cs" />
     <Compile Include="ViewModels\Access\RegisterViewModel.cs" />
+    <Compile Include="ViewModels\Game\GameViewmodel.cs" />
+    <Compile Include="ViewModels\User\DetailUserViewModel.cs" />
+    <Compile Include="ViewModels\User\EditUserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Content\bootstrap-grid.css" />
@@ -210,10 +219,12 @@
     <None Include="packages.config" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Game\Create.cshtml" />
+    <Content Include="Views\Game\Edit.cshtml" />
+    <Content Include="Views\Game\Index.cshtml" />
+    <Content Include="Views\Game\Delete.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModels\User\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\BUSS\BUSS.csproj">
       <Project>{7298786b-cd1f-4f89-9c48-d2d4e95b1fc2}</Project>

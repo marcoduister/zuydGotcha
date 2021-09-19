@@ -12,7 +12,6 @@ namespace BUSS.Service
         private GotchaContext DBContext = new GotchaContext();
 
 
-
         public IEnumerable<User> GetAllUsers()
         {
             if (DBContext.Users.Any())
@@ -26,6 +25,7 @@ namespace BUSS.Service
                 return Emty;
             }
         }
+
         public User GetUserById(int Id)
         {
             if (DBContext.Users.Any(e=>e.Id == Id))
@@ -59,9 +59,16 @@ namespace BUSS.Service
             }
         }
 
-        public void UploadProfileImage(byte[] profileimage)
+        public void UploadProfileImage(byte[] _profileimage,int Id)
         {
-            
+            if (DBContext.Account.Any(e => e.User_Id == Id))
+            {
+                Account updateprofile = DBContext.Account.First(e => e.User_Id == Id);
+
+                updateprofile.ProfileImage = _profileimage;
+
+                DBContext.SaveChanges();
+            }
         }
     }
 }

@@ -38,12 +38,12 @@ namespace Models
         public int? RuleSet_Id { get; set; }
 
         //Relations
-
         public virtual RuleSet RuleSet { get; set; }
         public virtual User User { get; set; }
         public virtual GameType GameType { get; set; }
         public virtual WordSet WordSet { get; set; }
         public virtual ICollection<Evaluation> Evaluations { get; set; }
+        public virtual ICollection<GamePlayer> GamePlayers { get; set; }
 
     }
 }

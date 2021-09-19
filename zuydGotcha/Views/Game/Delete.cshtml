@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+
+<div>
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="col-md-offset-2 col-md-10">
+        <h3>Weet uw zekker dat uw dit spel game wilt verwijderen??</h3>
+
+        @Html.ActionLink("Terug", "index", null, new { @class = "btn btn-default" })
+        <input type="submit" value="Delete" class="btn btn-danger" />
+    </div>
+    }
+</div>

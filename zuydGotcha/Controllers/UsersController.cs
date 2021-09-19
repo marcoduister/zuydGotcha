@@ -8,7 +8,8 @@ using System.Web.Mvc;
 using BUSS.Service;
 using zuydGotcha.Helper;
 using Models;
-
+using System.Data.Entity.Infrastructure;
+using zuydGotcha.ViewModels.User;
 
 namespace zuydGotcha.Controllers
 {
@@ -39,6 +40,7 @@ namespace zuydGotcha.Controllers
         [CheckAuth(Roles = "Admin")]
         public ActionResult Details(int id)
         {
+
             return View();
         }
 
@@ -48,10 +50,16 @@ namespace zuydGotcha.Controllers
         [CheckAuth(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
-            User Model = _UserService.GetUserById(id);
-            if (Model != null)
+            EditUserViewModel ViewModel = new EditUserViewModel();
+
+            User user = _UserService.GetUserById(id);
+           
+            // deze is momenteel niet in gebruik maak mapt wel viewmodel met user model
+            Mapper.Model(ViewModel, user);
+
+            if (user != null)
             {
-                return View(Model);
+                return View(user);
             }
             else
             {
@@ -78,19 +86,21 @@ namespace zuydGotcha.Controllers
         }
 
         [HttpPost]
-        public void SaveProfileImage()
+        public void SaveProfileImage(FormCollection formCollection)
         {
             if (Request.Files.Count != 0)
             {
 
                 byte[] Profileimage = null;
+                int Id = int.Parse(formCollection["Id"]);
                 using (var Reader = new BinaryReader(Request.Files[0].InputStream))
                 {
                     Profileimage = Reader.ReadBytes(Request.Files[0].ContentLength);
+                    
                 }
                 if (Profileimage != null)
                 {
-                    _UserService.UploadProfileImage(Profileimage);
+                    _UserService.UploadProfileImage(Profileimage,Id);
                 }
             }
         }
