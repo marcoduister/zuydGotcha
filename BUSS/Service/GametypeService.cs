@@ -12,6 +12,9 @@ namespace BUSS.Service
     {
         private GotchaContext DBContext = new GotchaContext();
 
-
+        public object GetAllGametypes()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

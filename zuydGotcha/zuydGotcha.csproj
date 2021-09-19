@@ -242,7 +242,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ViewModels\User\" />
-    <Folder Include="Views\AddGametypeViewModel\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BUSS\BUSS.csproj">
