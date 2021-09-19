@@ -237,7 +237,7 @@
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Gametype\AddGametype.cshtml" />
     <Content Include="Views\Gametype\EditGametype.cshtml" />
-    <Content Include="Views\Gametype\OverviewGametype.cshtml" />
+    <Content Include="Views\Gametype\Index.cshtml" />
     <Content Include="Views\Rules\AddRule.cshtml" />
     <Content Include="Views\Rules\EditRule.cshtml" />
     <Content Include="Views\Rules\OverviewRulesets.cshtml" />
@@ -250,7 +250,6 @@
     <Content Include="Views\Words\EditWordset.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ViewModels\User\" />
     <Content Include="Views\Game\Create.cshtml" />
     <Content Include="Views\Game\Edit.cshtml" />
     <Content Include="Views\Game\Index.cshtml" />

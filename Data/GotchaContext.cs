@@ -21,6 +21,8 @@ namespace Data
         public DbSet<User> Users { get; set; }
         public DbSet<Game> Games { get; set; }
         public DbSet<GameType> GameTypes { get; set; }
+        public DbSet<GamePlayer> GamePlayers { get; set; }
+        public DbSet<Evaluation> Evaluations { get; set; }
         public DbSet<Rule> Rules { get; set; }
         public DbSet<RuleSet> RuleSets { get; set; }
         public DbSet<Contract> Contracts { get; set; }

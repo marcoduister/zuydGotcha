@@ -80,6 +80,69 @@ namespace Data.Migrations
                 .Index(t => t.RuleSet_Id);
             
             CreateTable(
+                "dbo.GamePlayer",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        User_Id = c.Int(nullable: false),
+                        Active = c.Boolean(nullable: false),
+                        Game_Id = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Game", t => t.Game_Id)
+                .ForeignKey("dbo.User", t => t.User_Id)
+                .Index(t => t.User_Id)
+                .Index(t => t.Game_Id);
+            
+            CreateTable(
+                "dbo.Contract",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Eliminate_Id = c.Int(nullable: false),
+                        Eliminator_Id = c.Int(nullable: false),
+                        Word_Id = c.Int(),
+                        EliminatedTime = c.DateTime(),
+                        Story = c.String(),
+                        Game_Id = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Game", t => t.Game_Id)
+                .ForeignKey("dbo.GamePlayer", t => t.Eliminate_Id)
+                .ForeignKey("dbo.GamePlayer", t => t.Eliminator_Id)
+                .ForeignKey("dbo.Word", t => t.Word_Id)
+                .Index(t => t.Eliminate_Id)
+                .Index(t => t.Eliminator_Id)
+                .Index(t => t.Word_Id)
+                .Index(t => t.Game_Id);
+            
+            CreateTable(
+                "dbo.Word",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Word_Name = c.String(),
+                        Word_public = c.Boolean(nullable: false),
+                        Maker_Id = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.User", t => t.Maker_Id)
+                .Index(t => t.Maker_Id);
+            
+            CreateTable(
+                "dbo.WordSet",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        WordSet_Name = c.String(),
+                        WordSet_public = c.Boolean(nullable: false),
+                        Maker_Id = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.User", t => t.Maker_Id)
+                .Index(t => t.Maker_Id);
+            
+            CreateTable(
                 "dbo.GameType",
                 c => new
                     {
@@ -120,67 +183,17 @@ namespace Data.Migrations
                 .Index(t => t.Maker_Id);
             
             CreateTable(
-                "dbo.WordSet",
+                "dbo.WordSetWord",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
-                        WordSet_Name = c.String(),
-                        WordSet_public = c.Boolean(nullable: false),
-                        Maker_Id = c.Int(nullable: false),
+                        WordSet_Id = c.Int(nullable: false),
+                        Word_Id = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.User", t => t.Maker_Id)
-                .Index(t => t.Maker_Id);
-            
-            CreateTable(
-                "dbo.Word",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Word_Name = c.String(),
-                        Word_public = c.Boolean(nullable: false),
-                        Maker_Id = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.User", t => t.Maker_Id)
-                .Index(t => t.Maker_Id);
-            
-            CreateTable(
-                "dbo.Contract",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Eliminate_Id = c.Int(nullable: false),
-                        Eliminator_Id = c.Int(nullable: false),
-                        Word_Id = c.Int(),
-                        EliminatedTime = c.DateTime(),
-                        Story = c.String(),
-                        Game_Id = c.Int(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Game", t => t.Game_Id)
-                .ForeignKey("dbo.GamePlayer", t => t.Eliminate_Id)
-                .ForeignKey("dbo.GamePlayer", t => t.Eliminator_Id)
+                .PrimaryKey(t => new { t.WordSet_Id, t.Word_Id })
+                .ForeignKey("dbo.WordSet", t => t.WordSet_Id)
                 .ForeignKey("dbo.Word", t => t.Word_Id)
-                .Index(t => t.Eliminate_Id)
-                .Index(t => t.Eliminator_Id)
-                .Index(t => t.Word_Id)
-                .Index(t => t.Game_Id);
-            
-            CreateTable(
-                "dbo.GamePlayer",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        User_Id = c.Int(nullable: false),
-                        Active = c.Boolean(nullable: false),
-                        Game_Id = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Game", t => t.Game_Id)
-                .ForeignKey("dbo.User", t => t.User_Id)
-                .Index(t => t.User_Id)
-                .Index(t => t.Game_Id);
+                .Index(t => t.WordSet_Id)
+                .Index(t => t.Word_Id);
             
             CreateTable(
                 "dbo.RuleRuleSet",
@@ -195,19 +208,6 @@ namespace Data.Migrations
                 .Index(t => t.Rule_Id)
                 .Index(t => t.RuleSet_Id);
             
-            CreateTable(
-                "dbo.WordWordSet",
-                c => new
-                    {
-                        Word_Id = c.Int(nullable: false),
-                        WordSet_Id = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => new { t.Word_Id, t.WordSet_Id })
-                .ForeignKey("dbo.Word", t => t.Word_Id)
-                .ForeignKey("dbo.WordSet", t => t.WordSet_Id)
-                .Index(t => t.Word_Id)
-                .Index(t => t.WordSet_Id);
-            
         }
         
         public override void Down()
@@ -215,16 +215,6 @@ namespace Data.Migrations
             DropForeignKey("dbo.Evaluation", "User_Id", "dbo.User");
             DropForeignKey("dbo.Evaluation", "Game_Id", "dbo.Game");
             DropForeignKey("dbo.Game", "WordSet_Id", "dbo.WordSet");
-            DropForeignKey("dbo.WordWordSet", "WordSet_Id", "dbo.WordSet");
-            DropForeignKey("dbo.WordWordSet", "Word_Id", "dbo.Word");
-            DropForeignKey("dbo.Word", "Maker_Id", "dbo.User");
-            DropForeignKey("dbo.Contract", "Word_Id", "dbo.Word");
-            DropForeignKey("dbo.Contract", "Eliminator_Id", "dbo.GamePlayer");
-            DropForeignKey("dbo.Contract", "Eliminate_Id", "dbo.GamePlayer");
-            DropForeignKey("dbo.GamePlayer", "User_Id", "dbo.User");
-            DropForeignKey("dbo.GamePlayer", "Game_Id", "dbo.Game");
-            DropForeignKey("dbo.Contract", "Game_Id", "dbo.Game");
-            DropForeignKey("dbo.WordSet", "Maker_Id", "dbo.User");
             DropForeignKey("dbo.Game", "Maker_Id", "dbo.User");
             DropForeignKey("dbo.Game", "RuleSet_Id", "dbo.RuleSet");
             DropForeignKey("dbo.RuleSet", "Maker_Id", "dbo.User");
@@ -233,22 +223,32 @@ namespace Data.Migrations
             DropForeignKey("dbo.RuleRuleSet", "Rule_Id", "dbo.Rule");
             DropForeignKey("dbo.Game", "GameType_Id", "dbo.GameType");
             DropForeignKey("dbo.GameType", "Maker_Id", "dbo.User");
+            DropForeignKey("dbo.GamePlayer", "User_Id", "dbo.User");
+            DropForeignKey("dbo.GamePlayer", "Game_Id", "dbo.Game");
+            DropForeignKey("dbo.Contract", "Word_Id", "dbo.Word");
+            DropForeignKey("dbo.WordSetWord", "Word_Id", "dbo.Word");
+            DropForeignKey("dbo.WordSetWord", "WordSet_Id", "dbo.WordSet");
+            DropForeignKey("dbo.WordSet", "Maker_Id", "dbo.User");
+            DropForeignKey("dbo.Word", "Maker_Id", "dbo.User");
+            DropForeignKey("dbo.Contract", "Eliminator_Id", "dbo.GamePlayer");
+            DropForeignKey("dbo.Contract", "Eliminate_Id", "dbo.GamePlayer");
+            DropForeignKey("dbo.Contract", "Game_Id", "dbo.Game");
             DropForeignKey("dbo.Account", "User_Id", "dbo.User");
-            DropIndex("dbo.WordWordSet", new[] { "WordSet_Id" });
-            DropIndex("dbo.WordWordSet", new[] { "Word_Id" });
             DropIndex("dbo.RuleRuleSet", new[] { "RuleSet_Id" });
             DropIndex("dbo.RuleRuleSet", new[] { "Rule_Id" });
-            DropIndex("dbo.GamePlayer", new[] { "Game_Id" });
-            DropIndex("dbo.GamePlayer", new[] { "User_Id" });
+            DropIndex("dbo.WordSetWord", new[] { "Word_Id" });
+            DropIndex("dbo.WordSetWord", new[] { "WordSet_Id" });
+            DropIndex("dbo.Rule", new[] { "Maker_Id" });
+            DropIndex("dbo.RuleSet", new[] { "Maker_Id" });
+            DropIndex("dbo.GameType", new[] { "Maker_Id" });
+            DropIndex("dbo.WordSet", new[] { "Maker_Id" });
+            DropIndex("dbo.Word", new[] { "Maker_Id" });
             DropIndex("dbo.Contract", new[] { "Game_Id" });
             DropIndex("dbo.Contract", new[] { "Word_Id" });
             DropIndex("dbo.Contract", new[] { "Eliminator_Id" });
             DropIndex("dbo.Contract", new[] { "Eliminate_Id" });
-            DropIndex("dbo.Word", new[] { "Maker_Id" });
-            DropIndex("dbo.WordSet", new[] { "Maker_Id" });
-            DropIndex("dbo.Rule", new[] { "Maker_Id" });
-            DropIndex("dbo.RuleSet", new[] { "Maker_Id" });
-            DropIndex("dbo.GameType", new[] { "Maker_Id" });
+            DropIndex("dbo.GamePlayer", new[] { "Game_Id" });
+            DropIndex("dbo.GamePlayer", new[] { "User_Id" });
             DropIndex("dbo.Game", new[] { "RuleSet_Id" });
             DropIndex("dbo.Game", new[] { "GameType_Id" });
             DropIndex("dbo.Game", new[] { "WordSet_Id" });
@@ -256,15 +256,15 @@ namespace Data.Migrations
             DropIndex("dbo.Evaluation", new[] { "Game_Id" });
             DropIndex("dbo.Evaluation", new[] { "User_Id" });
             DropIndex("dbo.Account", new[] { "User_Id" });
-            DropTable("dbo.WordWordSet");
             DropTable("dbo.RuleRuleSet");
-            DropTable("dbo.GamePlayer");
-            DropTable("dbo.Contract");
-            DropTable("dbo.Word");
-            DropTable("dbo.WordSet");
+            DropTable("dbo.WordSetWord");
             DropTable("dbo.Rule");
             DropTable("dbo.RuleSet");
             DropTable("dbo.GameType");
+            DropTable("dbo.WordSet");
+            DropTable("dbo.Word");
+            DropTable("dbo.Contract");
+            DropTable("dbo.GamePlayer");
             DropTable("dbo.Game");
             DropTable("dbo.Evaluation");
             DropTable("dbo.User");
