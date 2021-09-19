@@ -12,9 +12,20 @@ namespace BUSS.Service
     {
         private GotchaContext DBContext = new GotchaContext();
 
-        public object GetAllGametypes()
+        public IEnumerable<GameType> GetAllGametypes()
         {
-            throw new NotImplementedException();
+            if (DBContext.Users.Any())
+            {
+                IEnumerable<GameType> gametypeList = DBContext.GameTypes.Where(e => e.Id != 1).ToList();
+                return gametypeList;
+            }
+            else
+            {
+                List<GameType> emty = new List<GameType>();
+                return emty;
+            }
         }
+
+
     }
 }

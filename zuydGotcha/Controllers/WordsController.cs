@@ -3,11 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
+using BUSS.Service;
+using zuydGotcha.Helper;
+using Models;
+using zuydGotcha.ViewModels.Words;
 
 namespace zuydGotcha.Controllers
 {
     public class WordsController : Controller
     {
+        private WordService wordService = new WordService();
+
         // GET: Words
         public ActionResult AddWord()
         {
@@ -21,7 +28,9 @@ namespace zuydGotcha.Controllers
 
         public ActionResult OverviewWordsets()
         {
-            return View();
+            var wordsetList = wordService.GetAllWordsets();
+
+            return View(wordsetList);
         }
 
         public ActionResult AddWordset()

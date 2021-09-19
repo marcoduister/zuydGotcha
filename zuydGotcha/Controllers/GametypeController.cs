@@ -18,6 +18,7 @@ namespace zuydGotcha.Controllers
         public ActionResult OverviewGametype()
         {
             var gametypeList = gametypeService.GetAllGametypes();
+
             return View(gametypeList);
         }
 
