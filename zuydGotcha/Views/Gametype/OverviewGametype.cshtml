@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Models.GameType>
+
+@{
+    ViewBag.Title = "OverviewGametype";
+}
+
+<h2>Spelvarianten</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.GameType_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GameType_Description)
+        </th>
+    </tr>
+</table>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.GameType_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GameType_Description)
+        </td>
+        <td>
+            @Html.ActionLink("Wijzig", "Edit", new {id = item.Id}) 
+            @Html.ActionLink("Verwijder", "Delete")
+        </td>
+    </tr>
+}

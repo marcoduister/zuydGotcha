@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Models.RuleSet>
+
+@{
+    ViewBag.Title = "OverviewRulesets";
+}
+
+<h2>OverviewRulesets</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RuleSet_Name)
+        </th>
+    </tr>
+</table>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RuleSet_Name)
+        </td>
+        <td>
+            @Html.ActionLink("Wijzig", "Edit", new { id = item.Id })
+        </td>
+    </tr>
+}

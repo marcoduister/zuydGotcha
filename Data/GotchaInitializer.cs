@@ -14,7 +14,7 @@ namespace Data
             var User = new List<User>
             {
             new User{Email="Marcoduister@hotmail.com", Password="Qwerty", User_Rol= Enums.Rolen.Admin, UserActive =true},
-            new User{Email="Meredith@hotmail.com", Password="Qwerty",User_Rol= Enums.Rolen.Gamemaster, UserActive =true},
+            new User{Email="eva@hotmail.com", Password="Qwerty",User_Rol= Enums.Rolen.Admin, UserActive =true},
             new User{Email="Arturo@hotmail.com", Password="Qwerty",User_Rol= Enums.Rolen.Gamemaster, UserActive =true},
             new User{Email="Gytis@hotmail.com", Password="Qwerty",User_Rol= Enums.Rolen.Player, UserActive =true},
             new User{Email="Yan@hotmail.com",Password="Qwerty",User_Rol= Enums.Rolen.Player, UserActive =true},
