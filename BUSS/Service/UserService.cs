@@ -45,10 +45,6 @@ namespace BUSS.Service
         {
             if (!DBContext.Users.Any(e => e.Email == Model.Email))
             {
-                byte[] bytes = { 0, 0, 1, 25 };
-
-
-                Model.Account.ProfileImage = bytes;
                 
                 DBContext.SaveChanges();
                 return true;

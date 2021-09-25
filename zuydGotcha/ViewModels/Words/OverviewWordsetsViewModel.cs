@@ -7,5 +7,6 @@ namespace zuydGotcha.ViewModels.Words
 {
     public class OverviewWordsetsViewModel
     {
+
     }
 }

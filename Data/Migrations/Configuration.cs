@@ -18,11 +18,11 @@ namespace Data.Migrations
         {
             var User = new List<User>
             {
-            new User{Email="Marcoduister@hotmail.com", Password="Qwerty", User_Rol= Enums.Rolen.Admin, UserActive =true},
-            new User{Email="Eva@hotmail.com", Password="Qwerty",User_Rol= Enums.Rolen.Gamemaster, UserActive =true},
-            new User{Email="Julean@hotmail.com", Password="Qwerty",User_Rol= Enums.Rolen.Gamemaster, UserActive =true},
-            new User{Email="Rick@hotmail.com", Password="Qwerty",User_Rol= Enums.Rolen.Player, UserActive =true},
-            new User{Email="Broertje@hotmail.com",Password="Qwerty",User_Rol= Enums.Rolen.Player, UserActive =true},
+                new User{Email="Marcoduister@hotmail.com", Password="Qwerty", User_Rol= Enums.Rolen.Admin, UserActive =true},
+                new User{Email="Eva@hotmail.com", Password="Qwerty",User_Rol= Enums.Rolen.Admin, UserActive =true},
+                new User{Email="Julean@hotmail.com", Password="Qwerty",User_Rol= Enums.Rolen.Gamemaster, UserActive =true},
+                new User{Email="Rick@hotmail.com", Password="Qwerty",User_Rol= Enums.Rolen.Player, UserActive =true},
+                new User{Email="Broertje@hotmail.com",Password="Qwerty",User_Rol= Enums.Rolen.Player, UserActive =true},
             };
             var account = new List<Account>
             {

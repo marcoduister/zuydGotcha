@@ -1,45 +1,155 @@
-﻿using System;
+﻿using BUSS.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Mvc;
-using System.Web.Security;
-using BUSS.Service;
-using zuydGotcha.Helper;
 using Models;
-using zuydGotcha.ViewModels.Words;
+using System.Web.Mvc;
+using zuydGotcha.Helper;
 
 namespace zuydGotcha.Controllers
 {
     public class WordsController : Controller
     {
-        private WordService wordService = new WordService();
+
+        private WordService WordService = new WordService();
 
         // GET: Words
-        public ActionResult AddWord()
+        [CheckAuth(Roles = "Admin,GameMasters")]
+        public ActionResult Index()
         {
-            return View();
-        }
-
-        public ActionResult EditWord()
-        {
-            return View();
-        }
-
-        public ActionResult OverviewWordsets()
-        {
-            var wordsetList = wordService.GetAllWordsets();
+            var wordsetList = WordService.GetAllWord();
 
             return View(wordsetList);
         }
 
-        public ActionResult AddWordset()
+        // GET: Words/Details/5
+        [CheckAuth(Roles = "Admin,GameMasters")]
+        public ActionResult Details(int id)
+        {
+            var Model = WordService.GetWordById(id);
+            if (Model == null)
+            {
+                RedirectToAction("Index");
+            }
+
+            return View(Model);
+        }
+
+        // GET: Words/Create
+        [CheckAuth(Roles = "Admin,GameMasters")]
+        public ActionResult Create()
         {
             return View();
         }
 
-        public ActionResult EditWordset()
+        // POST: Words/Create
+        [HttpPost]
+        [CheckAuth(Roles = "Admin,GameMasters")]
+        public ActionResult Create(Word Model)
         {
+            if (ModelState.IsValid)
+            {
+                if (WordService.CreateByModel(Model))
+                {
+                    RedirectToAction("Index");
+                }
+                else
+                {
+                    ModelState.AddModelError(nameof(Model.Word_Name), "Er is iets fout gegaan probeer het later op nieuw");
+                }
+            }
+
+            return View(Model);
+        }
+
+        // GET: Words/Edit/5
+        [CheckAuth(Roles = "Admin,GameMasters")]
+        public ActionResult Edit(int id)
+        {
+            var Model = WordService.GetWordById(id);
+            if (Model == null)
+            {
+               RedirectToAction("Index");
+            }
+
+            return View(Model);
+        }
+
+        // POST: Words/Edit/5
+        [HttpPost]
+        [CheckAuth(Roles = "Admin,GameMasters")]
+        public ActionResult Edit(Word Model)
+        {
+            if (ModelState.IsValid)
+            {
+                if (WordService.EditByModel(Model))
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ModelState.AddModelError(nameof(Model.Word_Name), "Er is iets fout gegaan probeer het later op nieuw");
+                }
+            }
+
+            return View(Model);
+        }
+
+        // GET: Words/Delete/5
+        [CheckAuth(Roles = "Admin,GameMasters")]
+        public ActionResult Delete(int id)
+        {
+            var Model = WordService.GetWordById(id);
+            if (Model == null)
+            {
+                RedirectToAction("Index");
+            }
+
+            return View(Model);
+        }
+
+        // POST: Words/Delete/5
+        [HttpPost]
+        [CheckAuth(Roles = "Admin,GameMasters")]
+        public ActionResult Delete(Word Model)
+        {
+            if (WordService.DeleteByModel(Model))
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ModelState.AddModelError(nameof(Model.Word_Name), "Er is iets fout gegaan probeer het later op nieuw");
+            }
+            return View();
+        }
+
+        [CheckAuth(Roles = "Admin,GameMasters")]
+        public ActionResult Copy(int id)
+        {
+
+            var Model = WordService.GetWordById(id);
+            if (Model == null)
+            {
+                RedirectToAction("Index");
+            }
+
+            return View(Model);
+        }
+
+        [HttpPost]
+        [CheckAuth(Roles = "Admin,GameMasters")]
+        public ActionResult Copy(Word Model)
+        {
+            if (WordService.CopyByModel(Model))
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ModelState.AddModelError(nameof(Model.Word_Name), "Er is iets fout gegaan probeer het later op nieuw");
+            }
             return View();
         }
     }

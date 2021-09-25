@@ -1,0 +1,61 @@
+﻿@model zuydGotcha.ViewModels.WordSet.WordenSetViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>WordenSet aanmaken</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h4>WordSet</h4>
+                <hr />
+                <div class="form-group">
+                    @Html.LabelFor(model => model.WordSet_Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.WordSet_Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.WordSet_Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.WordSet_public, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <div class="checkbox">
+                            @Html.EditorFor(model => model.WordSet_public)
+                            @Html.ValidationMessageFor(model => model.WordSet_public, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Selecteer Worden </label>
+                    <div class="col-md-10">
+                        <div class="checkbox">
+                            @Html.ListBoxFor(n => n.SelectedIds, new SelectList(Model.DropdownWordList, "Id", "Word_Name"))
+                            @Html.ValidationMessageFor(model => model.SelectedIds, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="form-horizontal">
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+

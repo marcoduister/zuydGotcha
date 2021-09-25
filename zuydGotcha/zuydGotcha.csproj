@@ -46,8 +46,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\BUSS\bin\Debug\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -125,11 +127,13 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccessController.cs" />
+    <Compile Include="Controllers\DropDownController.cs" />
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\GametypeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RulesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Controllers\WordSetController.cs" />
     <Compile Include="Controllers\WordsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -149,6 +153,7 @@
     <Compile Include="ViewModels\Rules\EditRulesetViewModel.cs" />
     <Compile Include="ViewModels\Rules\EditRuleViewModel.cs" />
     <Compile Include="ViewModels\Rules\OverviewRulesetsViewModel.cs" />
+    <Compile Include="ViewModels\WordSet\WordenSetViewModel.cs" />
     <Compile Include="ViewModels\Words\AddWordsetViewModel.cs" />
     <Compile Include="ViewModels\Words\AddWordViewModel.cs" />
     <Compile Include="ViewModels\Words\EditWordsetViewModel.cs" />
@@ -157,6 +162,7 @@
     <Compile Include="ViewModels\Game\GameViewmodel.cs" />
     <Compile Include="ViewModels\User\DetailUserViewModel.cs" />
     <Compile Include="ViewModels\User\EditUserViewModel.cs" />
+    <Compile Include="ViewModels\Words\OverviewWordsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Content\bootstrap-grid.css" />
@@ -243,11 +249,18 @@
     <Content Include="Views\Rules\OverviewRulesets.cshtml" />
     <Content Include="Views\Rules\AddRuleset.cshtml" />
     <Content Include="Views\Rules\EditRuleset.cshtml" />
-    <Content Include="Views\Words\AddWord.cshtml" />
-    <Content Include="Views\Words\EditWord.cshtml" />
-    <Content Include="Views\Words\OverviewWordsets.cshtml" />
-    <Content Include="Views\Words\AddWordset.cshtml" />
-    <Content Include="Views\Words\EditWordset.cshtml" />
+    <Content Include="Views\Words\Index.cshtml" />
+    <Content Include="Views\Words\Create.cshtml" />
+    <Content Include="Views\Words\Edit.cshtml" />
+    <Content Include="Views\Words\Details.cshtml" />
+    <Content Include="Views\Words\Delete.cshtml" />
+    <Content Include="Views\Words\Copy.cshtml" />
+    <Content Include="Views\WordSet\Index.cshtml" />
+    <Content Include="Views\WordSet\Edit.cshtml" />
+    <Content Include="Views\WordSet\Delete.cshtml" />
+    <Content Include="Views\WordSet\Details.cshtml" />
+    <Content Include="Views\WordSet\Create.cshtml" />
+    <Content Include="Views\WordSet\Copy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Game\Create.cshtml" />

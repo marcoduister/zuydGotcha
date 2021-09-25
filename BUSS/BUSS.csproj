@@ -35,6 +35,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,6 +50,7 @@
     <Compile Include="Service\RuleService.cs" />
     <Compile Include="Service\GameService.cs" />
     <Compile Include="Service\UserService.cs" />
+    <Compile Include="Service\WordSetService.cs" />
     <Compile Include="Service\WordService.cs" />
   </ItemGroup>
   <ItemGroup>
