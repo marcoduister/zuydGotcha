@@ -37,6 +37,13 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @if (Model.Maker_Id.ToString() == Session["UserID"].ToString())
+    {
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+    }
+    else
+    {
+        @Html.ActionLink("Kopier", "Copy", new { id = Model.Id })
+    }
+    @Html.ActionLink("Terug", "Index")
 </p>

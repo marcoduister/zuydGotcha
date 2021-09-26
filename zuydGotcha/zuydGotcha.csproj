@@ -153,6 +153,7 @@
     <Compile Include="ViewModels\Rules\EditRulesetViewModel.cs" />
     <Compile Include="ViewModels\Rules\EditRuleViewModel.cs" />
     <Compile Include="ViewModels\Rules\OverviewRulesetsViewModel.cs" />
+    <Compile Include="ViewModels\Shared\ModalViewModel.cs" />
     <Compile Include="ViewModels\WordSet\WordenSetViewModel.cs" />
     <Compile Include="ViewModels\Words\AddWordsetViewModel.cs" />
     <Compile Include="ViewModels\Words\AddWordViewModel.cs" />
@@ -261,6 +262,8 @@
     <Content Include="Views\WordSet\Details.cshtml" />
     <Content Include="Views\WordSet\Create.cshtml" />
     <Content Include="Views\WordSet\Copy.cshtml" />
+    <Content Include="Views\Shared\_Modal.cshtml" />
+    <Content Include="Views\Words\_Modal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Game\Create.cshtml" />

@@ -31,7 +31,7 @@
     </dl>
 </div>
 <p>
-    @if (Model.Id.ToString() == Session["UserID"].ToString())
+    @if (Model.Maker_Id.ToString() == Session["UserID"].ToString())
     {
         @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
     }

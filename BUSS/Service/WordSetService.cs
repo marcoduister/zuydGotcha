@@ -86,7 +86,8 @@ namespace BUSS.Service
                         Wordset.Word.Add(DBContext.Words.First(e => e.Id == item.Id));
                 };
 
-                model.Maker_Id = int.Parse(HttpContext.Current.Session["UserID"].ToString());
+                Wordset.WordSet_Name = model.WordSet_Name;
+                Wordset.WordSet_public = model.WordSet_public;
 
                 DBContext.SaveChanges();
                 return true;
@@ -124,9 +125,7 @@ namespace BUSS.Service
                 {
                     WordSet DeleteWordSet = DBContext.WordSets.Include(e =>e.Word).AsNoTracking().First(e => e.Id == Model.Id);
 
-
-                    DBContext.WordSets.Remove(DeleteWordSet);
-                    //DBContext.Entry(DeleteWordSet).State = EntityState.Deleted;
+                    DBContext.Entry(DeleteWordSet).State = EntityState.Deleted;
                     DBContext.SaveChanges();
                     return true;
                 }
@@ -143,20 +142,39 @@ namespace BUSS.Service
 
         }
 
-        public bool CopyByModel(WordSet Model)
+        public bool CopyByModel(int Id)
         {
             try
             {
-                if (DBContext.WordSets.Any(e => e.Id == Model.Id))
+                if (DBContext.WordSets.AsNoTracking().Any(e => e.Id == Id))
                 {
-
-                    WordSet CopyWordSet = new WordSet()
+                    WordSet wordSet = DBContext.WordSets.AsNoTracking().First(e => e.Id == Id);
+                    WordSet NewWordSet = new WordSet()
                     {
-                        WordSet_Name = Model.WordSet_Name,
-                        Maker_Id = int.Parse(HttpContext.Current.Session["UserID"].ToString())
+                        WordSet_Name = wordSet.WordSet_Name,
+                        WordSet_public = wordSet.WordSet_public,
+                        Maker_Id = int.Parse(HttpContext.Current.Session["UserID"].ToString()),
                     };
+                    // gaat elk word af om tekijken als de gebruiker die al in zijn worden lijst heeft en kopiert die dan
+                    foreach (var item in wordSet.Word.ToList())
+                    {
+                        //maakt een kopier van word
+                        Word copy = new Word()
+                        {
+                            Id = 0,
+                            Maker_Id = NewWordSet.Maker_Id,
+                            Word_public = item.Word_public,
+                            Word_Name = item.Word_Name
+                        };
 
-                    DBContext.WordSets.Add(CopyWordSet);
+                        if (DBContext.Words.Any(e=>e.Word_Name == copy.Word_Name && e.Maker_Id == copy.Maker_Id))
+                        {
+                            copy = DBContext.Words.First(e => e.Word_Name == copy.Word_Name && e.Maker_Id == copy.Maker_Id);
+                            copy.WordSets = null;
+                        }
+                        NewWordSet.Word.Add(copy);
+                    }
+                    DBContext.WordSets.Add(NewWordSet);
                     DBContext.SaveChanges();
                     return true;
                 }
@@ -165,7 +183,7 @@ namespace BUSS.Service
                     return false;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 return false;

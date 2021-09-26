@@ -6,6 +6,7 @@ using System.Web;
 using Models;
 using System.Web.Mvc;
 using zuydGotcha.Helper;
+using zuydGotcha.ViewModels.Shared;
 
 namespace zuydGotcha.Controllers
 {
@@ -128,7 +129,6 @@ namespace zuydGotcha.Controllers
         [CheckAuth(Roles = "Admin,GameMasters")]
         public ActionResult Copy(int id)
         {
-
             var Model = WordService.GetWordById(id);
             if (Model == null)
             {
@@ -136,6 +136,14 @@ namespace zuydGotcha.Controllers
             }
 
             return View(Model);
+
+            //dit is voor het implementeren van modal vanplaats een hele view
+            //ModalViewModel Model = new ModalViewModel();
+            //Model.ObjId = id;
+            //Model.Title = "WordSet Kopieren";
+            //Model.Body = "Weet uw zekker dat uw deze wilt Kopieren!!!";
+
+            //return PartialView("~/Views/Shared/_Modal.cshtml", Model);
         }
 
         [HttpPost]
