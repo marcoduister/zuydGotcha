@@ -127,7 +127,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccessController.cs" />
-    <Compile Include="Controllers\DropDownController.cs" />
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\GametypeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -153,7 +152,6 @@
     <Compile Include="ViewModels\Rules\EditRulesetViewModel.cs" />
     <Compile Include="ViewModels\Rules\EditRuleViewModel.cs" />
     <Compile Include="ViewModels\Rules\OverviewRulesetsViewModel.cs" />
-    <Compile Include="ViewModels\Shared\ModalViewModel.cs" />
     <Compile Include="ViewModels\WordSet\WordenSetViewModel.cs" />
     <Compile Include="ViewModels\Words\AddWordsetViewModel.cs" />
     <Compile Include="ViewModels\Words\AddWordViewModel.cs" />
@@ -262,8 +260,7 @@
     <Content Include="Views\WordSet\Details.cshtml" />
     <Content Include="Views\WordSet\Create.cshtml" />
     <Content Include="Views\WordSet\Copy.cshtml" />
-    <Content Include="Views\Shared\_Modal.cshtml" />
-    <Content Include="Views\Words\_Modal.cshtml" />
+    <Content Include="Views\Game\Contract.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Game\Create.cshtml" />

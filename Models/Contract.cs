@@ -25,6 +25,9 @@ namespace Models
 
         public string Story { get; set; }
 
+        [ForeignKey("Game")]
+        public int Game_Id { get; set; }
+
         //Relations
         public virtual Game Game { get; set; }
         public virtual Word Word { get; set; }

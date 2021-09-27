@@ -103,6 +103,10 @@
     <Compile Include="Migrations\202109192031199_initial.Designer.cs">
       <DependentUpon>202109192031199_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202109271754273_addgameid.cs" />
+    <Compile Include="Migrations\202109271754273_addgameid.Designer.cs">
+      <DependentUpon>202109271754273_addgameid.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -119,6 +123,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202109192031199_initial.resx">
       <DependentUpon>202109192031199_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109271754273_addgameid.resx">
+      <DependentUpon>202109271754273_addgameid.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

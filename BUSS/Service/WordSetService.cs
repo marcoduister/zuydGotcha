@@ -104,7 +104,7 @@ namespace BUSS.Service
         public WordSet GetWordSetById(int id)
         {
             WordSet wordSet = DBContext.WordSets.AsNoTracking().First(e =>e.Id == id);
-
+            
             if (DBContext.WordSets.Any(e => e.Id == id))
             {
                 WordSet WordSet = DBContext.WordSets.AsNoTracking().First(e => e.Id == id);

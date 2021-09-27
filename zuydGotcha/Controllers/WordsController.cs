@@ -6,7 +6,6 @@ using System.Web;
 using Models;
 using System.Web.Mvc;
 using zuydGotcha.Helper;
-using zuydGotcha.ViewModels.Shared;
 
 namespace zuydGotcha.Controllers
 {

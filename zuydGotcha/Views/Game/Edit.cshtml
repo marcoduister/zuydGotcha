@@ -40,7 +40,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.Game_Start, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-                                @Html.TextBoxFor(m => m.Game_Start, new { @class = "form-control", @Type = "Date", @id = "start", @name = "trip-start" })
+                                @Html.TextBoxFor(m => m.Game_Start, new { @class = "form-control", @readonly = true })
                                 @Html.ValidationMessageFor(m => m.Game_Start, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -48,7 +48,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.Game_Eind, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-                                @Html.TextBoxFor(m => m.Game_Eind, new { @class = "form-control", @Type = "Date", @id = "start", @name = "trip-start" })
+                                @Html.TextBoxFor(m => m.Game_Eind, new { @class = "form-control", @readonly = true })
                                 @Html.ValidationMessageFor(m => m.Game_Eind, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -62,7 +62,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.RandomWiner, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-                                @Html.EditorFor(model => model.RandomWiner, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.DropDownListFor(model => model.RandomWiner, Model.GamePlayers.Select(a => new SelectListItem { Value = a.Id.ToString(), Text = a.User.Account.FirstName + " " + a.User.Account.LastName }), "Select a RandomWinner", new { @class = "form-control" })
                                 @Html.ValidationMessageFor(model => model.RandomWiner, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -70,7 +70,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.BestKill, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-                                @Html.EditorFor(model => model.BestKill, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.DropDownListFor(model => model.BestKill, Model.GamePlayers.Select(a => new SelectListItem { Value = a.Id.ToString(), Text = a.User.Account.FirstName+" "+ a.User.Account.LastName }), "Select a BestKill", new { @class = "form-control" })
                                 @Html.ValidationMessageFor(model => model.BestKill, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -82,8 +82,8 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.WordSet_Id, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-                                @Html.DropDownListFor(model => model.WordSet_Id, Enumerable.Range(1, 10)
-                               .Select(i => new SelectListItem { Text = "WordSet " + i.ToString(), Value = i.ToString() }), new { @class = "form-control" })
+                                @Html.DropDownListFor(model => model.WordSet_Id, (IEnumerable<SelectListItem>)ViewData["WordSetDrop"] ?? new List<SelectListItem>(), "Select a WordSet", new { @class = "form-control" })
+                       
                                 @Html.ValidationMessageFor(model => model.WordSet_Id, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -91,8 +91,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.GameType_Id, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-                                @Html.DropDownListFor(model => model.GameType_Id, Enumerable.Range(1, 10)
-                               .Select(i => new SelectListItem { Text = "GameType " + i.ToString(), Value = i.ToString() }), new { @class = "form-control" })
+                                @Html.DropDownListFor(model => model.GameType_Id, (IEnumerable<SelectListItem>)ViewData["GameTypeDrop"] ?? new List<SelectListItem>(), "Select a GameType", new { @class = "form-control" })
                                 @Html.ValidationMessageFor(model => model.GameType_Id, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -100,8 +99,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.RuleSet_Id, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-                                @Html.DropDownListFor(model => model.RuleSet_Id, Enumerable.Range(1, 10)
-                                    .Select(i => new SelectListItem { Text = "RuleSet "+i.ToString(), Value = i.ToString() }), new { @class = "form-control" })
+                                @Html.DropDownListFor(model =>model.RuleSet_Id, (IEnumerable<SelectListItem>)ViewData["RuleSetDrop"] ?? new List<SelectListItem>(), "Select a RuleSet", new { @class = "form-control" })
                                 @Html.ValidationMessageFor(model => model.RuleSet_Id, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -160,7 +158,7 @@
                         @Html.DisplayFor(modelItem => item.User.Account.Residence)
                     </td>
                     <td>
-                        @Html.ActionLink("Contract", "Contract", new { id = item.Id }) |
+                        @Html.ActionLink("Contract", "Contract", new { UserId = item.User_Id, GameId = item.Game_Id }) |
                         @Html.ActionLink("Profile", "Profile", new { id = item.Id }) |
                         @Html.ActionLink("Verwijder", "Delete", new { id = item.Id })
                     </td>

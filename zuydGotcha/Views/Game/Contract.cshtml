@@ -1,0 +1,76 @@
+﻿@model List<Models.Contract>
+
+@{
+    ViewBag.Title = "Contract";
+}
+
+<h2>Contract</h2>
+
+
+<div class="accordion" id="accordionExample">
+
+    @foreach (var item in Model)
+    {
+        if (item == Model.Last())
+        {
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading-@item.Id">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-@item.Id" aria-expanded="true" aria-controls="collapse-@item.Id">
+                        Contract - @item.GamePlayer_Eliminate.User.Account.FirstName
+                    </button>
+                </h2>
+                <div id="collapse-@item.Id" class="accordion-collapse collapse show" aria-labelledby="heading-@item.Id" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <div class="mb-3 row">
+                            <label class="col-sm-2 col-form-label">Elimineer </label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text" value="@item.GamePlayer_Eliminate.User.Account.FirstName @item.GamePlayer_Eliminate.User.Account.LastName" aria-label="readonly input example" readonly>
+                            </div>
+                        </div>
+                        @if (item.Word_Id != null && item.Word_Id != 0)
+                        {
+                            <div class="mb-3 row">
+                                <label class="col-sm-2 col-form-label">Met het word </label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="text" value="@item.Word.Word_Name" aria-label="readonly input example" readonly>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading-@item.Id">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-@item.Id" aria-expanded="false" aria-controls="collapse-@item.Id">
+                        Contract - @item.GamePlayer_Eliminate.User.Account.FirstName
+                    </button>
+                </h2>
+                <div id="collapse-@item.Id"   class="accordion-collapse collapse" aria-labelledby="heading-@item.Id" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <div class="mb-3 row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Elimineer </label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text" value="@item.GamePlayer_Eliminate.User.Account.FirstName @item.GamePlayer_Eliminate.User.Account.LastName" aria-label="readonly input example" readonly>
+                            </div>
+                        </div>
+                        @if (item.Word_Id != null && item.Word_Id != 0)
+                        {
+                            <div class="mb-3 row">
+                                <label class="col-sm-2 col-form-label">Met het word </label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="text" value="@item.Word.Word_Name" aria-label="readonly input example" readonly>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    }
+
+</div>
+
