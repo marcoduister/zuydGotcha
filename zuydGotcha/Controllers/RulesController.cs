@@ -7,7 +7,6 @@ using System.Web.Security;
 using BUSS.Service;
 using zuydGotcha.Helper;
 using Models;
-using zuydGotcha.ViewModels.Rules;
 
 namespace zuydGotcha.Controllers
 {

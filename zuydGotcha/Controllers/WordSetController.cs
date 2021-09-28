@@ -90,7 +90,6 @@ namespace zuydGotcha.Controllers
                 NewModel.DropdownWordList = Dropdown;
                 NewModel.SelectedIds = Model.Word.Select(e => e.Id).ToArray();
                 return View(NewModel);
-
             }
 
             return View(NewModel);

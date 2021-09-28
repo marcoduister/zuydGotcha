@@ -144,24 +144,8 @@
     <Compile Include="ViewModels\Access\LoginViewModel.cs" />
     <Compile Include="ViewModels\Access\PasswordResetViewModel.cs" />
     <Compile Include="ViewModels\Access\RegisterViewModel.cs" />
-    <Compile Include="ViewModels\Gametypes\AddGametypeViewModel.cs" />
-    <Compile Include="ViewModels\Gametypes\OverviewGametype.cs" />
-    <Compile Include="ViewModels\Gametypes\EditGametypeViewModel.cs" />
-    <Compile Include="ViewModels\Rules\AddRulesetViewModel.cs" />
-    <Compile Include="ViewModels\Rules\AddRuleViewModel.cs" />
-    <Compile Include="ViewModels\Rules\EditRulesetViewModel.cs" />
-    <Compile Include="ViewModels\Rules\EditRuleViewModel.cs" />
-    <Compile Include="ViewModels\Rules\OverviewRulesetsViewModel.cs" />
     <Compile Include="ViewModels\WordSet\WordenSetViewModel.cs" />
-    <Compile Include="ViewModels\Words\AddWordsetViewModel.cs" />
-    <Compile Include="ViewModels\Words\AddWordViewModel.cs" />
-    <Compile Include="ViewModels\Words\EditWordsetViewModel.cs" />
-    <Compile Include="ViewModels\Words\EditWordViewModel.cs" />
-    <Compile Include="ViewModels\Words\OverviewWordsetsViewModel.cs" />
-    <Compile Include="ViewModels\Game\GameViewmodel.cs" />
-    <Compile Include="ViewModels\User\DetailUserViewModel.cs" />
     <Compile Include="ViewModels\User\EditUserViewModel.cs" />
-    <Compile Include="ViewModels\Words\OverviewWordsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Content\bootstrap-grid.css" />
