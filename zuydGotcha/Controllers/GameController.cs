@@ -87,21 +87,69 @@ namespace zuydGotcha.Controllers
         }
 
         [HttpGet]
+        [CheckAuth(Roles = "Admin,GameMasters,Player")]
+        public ActionResult Details(int id)
+        {
+            var model =_GameService.GetGameById(id);
+            if (model != null)
+            {
+                return View(model);
+            }
+            return RedirectToAction("Index");
+        }
+
+        [ChildActionOnly]
+        public ActionResult ContractPartial(int id)
+        {
+            int userid = int.Parse(Session["UserID"].ToString());
+            var Model = _GameplayerContractService.GetGameContractById(userid, id);
+            if (Model != null)
+            {
+                return PartialView("Contract", Model);
+
+            }
+            return PartialView("Contract", Model);
+           
+
+        }
+
+        [HttpGet]
         [CheckAuth(Roles = "Admin,GameMasters")]
         public ActionResult Delete(int id)
         {
-            return View();
+            var model = _GameService.GetGameById(id);
+            if (model != null)
+            {
+                return View(model);
+            }
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
         public ActionResult Contract(int UserId, int GameId)
         {
-            var Model = _GameplayerContractService.GetGameContractById(UserId,GameId);
-            return View(Model);
+            if (UserId != 0 && GameId != 0)
+            {
+                var Model = _GameplayerContractService.GetGameContractById(UserId, GameId);
+                return View(Model);
+            }
+            return RedirectToAction("Index");
         }
 
-
         [HttpGet]
+        public ActionResult Join(int id)
+        {
+            if (id != 0)
+            {
+                if (_GameplayerContractService.JoinGameById(id))
+                {
+                    return RedirectToAction("Details", "Game", new { id = id });
+                }
+            }
+            return RedirectToAction("Index");
+        }
+
+       [HttpGet]
         [CheckAuth(Roles = "Admin,GameMasters")]
         public ActionResult Start(int id)
         {
@@ -112,6 +160,19 @@ namespace zuydGotcha.Controllers
 
             return RedirectToAction("Index");
         }
+        [HttpGet]
+        [CheckAuth(Roles = "Player")]
+        public ActionResult Eliminate(int id)
+        {
+            // dit is nog niet geimplementeerd
+            //if (id != 0)
+            //{
+            //    _GameplayerContractService.EliminateByGamePlayerId(id);
+            //}
+
+            return RedirectToAction("Index");
+        }
+        
 
     }
 }

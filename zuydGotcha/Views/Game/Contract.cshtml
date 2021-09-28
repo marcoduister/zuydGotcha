@@ -36,7 +36,16 @@
                                 </div>
                             </div>
                         }
-
+                        @if (item.GamePlayer_Eliminator.Active)
+                        {
+                            <div class="mb-3 row">
+                                <div class="col-sm-10">
+                                    <p>
+                                        @Html.ActionLink("Elimineer", "Eliminate", new { id = item.GamePlayer_Eliminator.Id }, new { @class = "btn btn-success" })
+                                    </p>
+                                </div>
+                            </div>
+                        }
                     </div>
                 </div>
             </div>

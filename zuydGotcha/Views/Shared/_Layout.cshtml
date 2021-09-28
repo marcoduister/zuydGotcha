@@ -84,68 +84,72 @@
                                 Spellen
                             </a>
                         </li>
+                        @if ((string)Session["UserRole"] != Models.Enums.Rolen.Player.ToString())
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="collapse" href="#" data-bs-target="#DropdownRegels">
+                                    <i class="bi bi-receipt-cutoff"></i>
+                                    Regels
+                                </a>
+                                <div class="collapse" id="DropdownRegels">
+                                    <ul class="nav flex-column ps-4">
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" aria-current="page" href="@Url.Action("Index", "Rules")">
+                                                <i class="bi bi-receipt-cutoff"></i>
+                                                Regel's
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" aria-current="page" href="@Url.Action("Index", "RuleSet")">
+                                                <i class="bi bi-receipt"></i>
+                                                RegelSet's
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="collapse" href="#" data-bs-target="#DropdownWoorden">
+                                    <i class="bi bi-journal-text"></i>
+                                    Woorden
+                                </a>
+                                <div class="collapse" id="DropdownWoorden">
+                                    <ul class="nav flex-column ps-4">
+                                        <li class="nav-item">
+                                            <a class="nav-link" aria-current="page" href="@Url.Action("Index", "Words")">
+                                                <i class="bi bi-journal-richtext"></i>
+                                                Woorden
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" aria-current="page" href="@Url.Action("Index", "WordSet")">
+                                                <i class="bi bi-journals"></i>
+                                                WoordenSet
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="@Url.Action("Index", "GameType")" class="nav-link">
+                                    <i class="bi bi-ui-checks"></i>
+                                    Spel Type's
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="@Url.Action("Index", "Users")" class="nav-link">
+                                    <i class="bi bi-people-fill"></i>
+                                    Gebruikers
+                                </a>
+                            </li>
+                        }
 
 
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="collapse" href="#" data-bs-target="#DropdownRegels">
-                                <i class="bi bi-receipt-cutoff"></i>
-                                Regels
-                            </a>
-                            <div class="collapse" id="DropdownRegels">
-                                <ul class="nav flex-column ps-4">
 
-                                    <li class="nav-item">
-                                        <a class="nav-link" aria-current="page" href="@Url.Action("Index", "Rules")">
-                                            <i class="bi bi-receipt-cutoff"></i>
-                                            Regel's
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" aria-current="page" href="@Url.Action("Index", "RuleSet")">
-                                            <i class="bi bi-receipt"></i>
-                                            RegelSet's
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="collapse" href="#" data-bs-target="#DropdownWoorden">
-                                <i class="bi bi-journal-text"></i>
-                                Woorden
-                            </a>
-                            <div class="collapse" id="DropdownWoorden">
-                                <ul class="nav flex-column ps-4">
-                                    <li class="nav-item">
-                                        <a class="nav-link" aria-current="page" href="@Url.Action("Index", "Words")">
-                                            <i class="bi bi-journal-richtext"></i>
-                                            Woorden
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" aria-current="page" href="@Url.Action("Index", "WordSet")">
-                                            <i class="bi bi-journals"></i>
-                                            WoordenSet
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="@Url.Action("Index", "GameType")" class="nav-link">
-                                <i class="bi bi-ui-checks"></i>
-                                Spel Type's
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="@Url.Action("Index", "Users")" class="nav-link">
-                                <i class="bi bi-people-fill"></i>
-                                Gebruikers
-                            </a>
-                        </li>
                     </ul>
                 </div>
             </nav>

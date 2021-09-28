@@ -86,5 +86,68 @@ namespace BUSS.Service
                 return false;
             }
         }
+
+        public bool JoinGameById(int id)
+        {
+            int UserId = int.Parse(HttpContext.Current.Session["UserID"].ToString());
+            if (!DBContext.GamePlayers.Any(e => e.User_Id == UserId && e.Game_Id == id))
+            {
+                try
+                {
+                    GamePlayer player = new GamePlayer()
+                    {
+                        Game_Id = id,
+                        User_Id = UserId,
+                        Active = true
+                    };
+
+                    DBContext.GamePlayers.Add(player);
+                    DBContext.SaveChanges();
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public void EliminateByGamePlayerId(int id)
+        {
+            GamePlayer Eliminitor = DBContext.GamePlayers
+                .Include(e => e.Contract_Eliminate)
+                .Where(e => e.Id == id).First();
+
+            //GamePlayer Eliminate = DBContext.GamePlayers
+            //    .Include(e => e.Contract_Eliminate)
+            //    .Where(e => e.Id == Eliminitor.Contract_Eliminate.Where(a=>a.).Eliminator_Id).First();
+
+
+            if (Eliminitor != null)
+            {
+                Contract contract = new Contract()
+                {
+                    Eliminator_Id = Eliminitor.User_Id,
+                    Eliminate_Id = Eliminitor.Contract_Eliminate.Select(e=>e.Eliminator_Id).FirstOrDefault(),
+                    Game_Id = Eliminitor.Game_Id
+                    
+                };
+                //Eliminate.Active = false;
+
+                //if (Eliminitor.Contract_Eliminate.Select(e=>e.Word_Id).First() != 0)
+                //{
+                //    contract.Word_Id = Eliminitor.Contract_Eliminate.Select(e => e.Word_Id).First();
+                //}
+                DBContext.Contracts.Add(contract);
+            }
+            
+
+            DBContext.SaveChanges();
+        }
     }
 }
