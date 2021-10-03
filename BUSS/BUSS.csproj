@@ -51,6 +51,7 @@
     <Compile Include="Service\UserService.cs" />
     <Compile Include="Service\GameTypeService.cs" />
     <Compile Include="Service\RuleService.cs" />
+    <Compile Include="Service\RuleSetService.cs" />
     <Compile Include="Service\WordSetService.cs" />
     <Compile Include="Service\WordService.cs" />
   </ItemGroup>

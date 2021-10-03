@@ -132,6 +132,7 @@
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\GametypeController.cs" />
     <Compile Include="Controllers\RulesController.cs" />
+    <Compile Include="Controllers\RuleSetController.cs" />
     <Compile Include="Controllers\WordSetController.cs" />
     <Compile Include="Controllers\WordsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -144,6 +145,7 @@
     <Compile Include="ViewModels\Access\LoginViewModel.cs" />
     <Compile Include="ViewModels\Access\PasswordResetViewModel.cs" />
     <Compile Include="ViewModels\Access\RegisterViewModel.cs" />
+    <Compile Include="ViewModels\RuleSet\RuleSetViewModel.cs" />
     <Compile Include="ViewModels\WordSet\WordenSetViewModel.cs" />
     <Compile Include="ViewModels\User\EditUserViewModel.cs" />
   </ItemGroup>
