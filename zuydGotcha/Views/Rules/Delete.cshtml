@@ -1,0 +1,32 @@
+﻿@model Models.Rule
+
+@{
+    ViewBag.Title = "Regel Verwijderen";
+}
+
+<h2>Regel Verwijderen</h2>
+
+<h3> Weet u zekker dat uw deze wilt verwijderen?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Rule_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rule_Name)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Verwijder" class="btn btn-default" /> |
+            @Html.ActionLink("Terug", "Index")
+        </div>
+    }
+</div>
+

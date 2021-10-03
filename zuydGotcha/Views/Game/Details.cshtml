@@ -43,11 +43,14 @@
 
             </div>
             <div class="col">
-                @{
-                    Html.RenderAction("ContractPartial", "Game", new { id = Model.Id });
+                @if (Session["UserID"].ToString() != Model.Maker_Id.ToString())
+                {
+                    
+                    {
+                        Html.RenderAction("ContractPartial", "Game", new { id = Model.Id });
+                    }
+                    <hr />
                 }
-
-                <hr />
 
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">

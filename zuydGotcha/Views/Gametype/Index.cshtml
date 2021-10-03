@@ -1,10 +1,18 @@
 ﻿@model IEnumerable<Models.GameType>
 
 @{
-    ViewBag.Title = "OverviewGametype";
+    ViewBag.Title = "Index";
 }
 
-<h2>Spelvarianten</h2>
+<h2>Index</h2>
+
+
+@if (Session["UserRole"].ToString() == Models.Enums.Rolen.Admin.ToString())
+{
+<p>
+    <button type="button" class="btn btn-success btn-sm">GameType aanmaken</button>
+</p>
+}
 
 <table class="table">
     <tr>
@@ -14,21 +22,34 @@
         <th>
             @Html.DisplayNameFor(model => model.GameType_Description)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Maker_Id)
+        </th>
+        <th></th>
     </tr>
-</table>
 
-@foreach (var item in Model)
-{
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.GameType_Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GameType_Description)
-        </td>
-        <td>
-            @Html.ActionLink("Wijzig", "Edit", new {id = item.Id}) 
-            @Html.ActionLink("Verwijder", "Delete")
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.GameType_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GameType_Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Maker_Id)
+            </td>
+            <td>
+                @if (Session["UserRole"].ToString() == Models.Enums.Rolen.Admin.ToString())
+                {
+                   <button type="button" class="btn btn-info btn-sm">Inzien</button>
+                   <button type="button" class="btn btn-success btn-sm">Bewerk</button>
+                   <button type="button" class="btn btn-info btn-sm">Verwijder</button>
+                }
+
+            </td>
+        </tr>
+    }
+
+</table>

@@ -105,22 +105,25 @@
 
 
                             <td>
-                                @if (Session["UserRole"].ToString() != Models.Enums.Rolen.Player.ToString() || !item.GamePlayers.Any(e => e.User_Id.ToString() == Session["UserID"].ToString()))
+                                @if (item.Archived == false)
                                 {
-                                    if (item.Game_Start == null)
+                                    if (Session["UserRole"].ToString() != Models.Enums.Rolen.Player.ToString() || !item.GamePlayers.Any(e => e.User_Id.ToString() == Session["UserID"].ToString()))
                                     {
-                                        @Html.ActionLink("Start", "Start", new { id = item.Id }, new { @class = "btn btn-warning btn-sm" });
+                                        if (item.Game_Start == null)
+                                        {
+                                            @Html.ActionLink("Start", "Start", new { id = item.Id }, new { @class = "btn btn-warning btn-sm" });
+                                        }
+
+                                        @Html.ActionLink("inzien", "Details", new { id = item.Id }, new { @class = "btn btn-info btn-sm" });
+
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-success btn-sm" });
+
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" });
                                     }
-
-                                    @Html.ActionLink("inzien", "Details", new { id = item.Id }, new { @class = "btn btn-info btn-sm" });
-
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-success btn-sm" });
-
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" });
-                                }
-                                else
-                                {
-                                    @Html.ActionLink("inzien", "Details", new { id = item.Id }, new { @class = "btn btn-info btn-sm" });
+                                    else
+                                    {
+                                        @Html.ActionLink("inzien", "Details", new { id = item.Id }, new { @class = "btn btn-info btn-sm" });
+                                    }
                                 }
                             </td>
                         </tr>

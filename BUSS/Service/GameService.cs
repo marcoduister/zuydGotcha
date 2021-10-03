@@ -86,19 +86,15 @@ namespace BUSS.Service
         {
             try
             {
-                //List<Game> WordenList = new List<Word>();
-                //foreach (var item in model.Word)
-                //{
-                //    WordenList.Add(DBContext.Words.AsNoTracking().First(e => e.Id == item.Id));
-                //};
-                //model.Word = WordenList;
-                //model.Maker_Id = int.Parse(HttpContext.Current.Session["UserID"].ToString());
 
-                //DBContext.WordSets.Add(model);
-                //DBContext.SaveChanges();
+                model.Maker_Id = int.Parse(HttpContext.Current.Session["UserID"].ToString());
+                model.Archived = false;
+
+                DBContext.Games.Add(model);
+                DBContext.SaveChanges();
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception Ex)
             {
 
                 return false;
@@ -120,6 +116,25 @@ namespace BUSS.Service
                 CurrentGame.RandomWiner = model.RandomWiner;
                 CurrentGame.BestKill = model.BestKill;
                 CurrentGame.Archived = model.Archived;
+
+                DBContext.SaveChanges();
+                return true;
+
+            }
+            catch (Exception EX)
+            {
+
+                return false;
+            }
+        }
+
+        public bool Archive(int id)
+        {
+            try
+            {
+                Game CurrentGame = DBContext.Games.First(i => i.Id == id);
+
+                CurrentGame.Archived = true;
 
                 DBContext.SaveChanges();
                 return true;

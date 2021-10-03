@@ -47,10 +47,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\AccessService.cs" />
     <Compile Include="Service\GameplayerContractService.cs" />
-    <Compile Include="Service\GametypeService.cs" />
-    <Compile Include="Service\RuleService.cs" />
     <Compile Include="Service\GameService.cs" />
     <Compile Include="Service\UserService.cs" />
+    <Compile Include="Service\GameTypeService.cs" />
+    <Compile Include="Service\RuleService.cs" />
     <Compile Include="Service\WordSetService.cs" />
     <Compile Include="Service\WordService.cs" />
   </ItemGroup>

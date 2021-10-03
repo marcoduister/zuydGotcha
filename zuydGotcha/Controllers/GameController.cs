@@ -41,14 +41,14 @@ namespace zuydGotcha.Controllers
         {
             if (ModelState.IsValid)
             {
-                //if (WordService.EditByModel(Model))
-                //{
-                //    return RedirectToAction("Index");
-                //}
-                //else
-                //{
-                //    ModelState.AddModelError(nameof(Model.Word_Name), "Er is iets fout gegaan probeer het later op nieuw");
-                //}
+                if (_GameService.CreateByModel(Model))
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ModelState.AddModelError(nameof(Model.Game_Name), "Er is iets fout gegaan probeer het later op nieuw");
+                }
             }
 
             return View(Model);
@@ -124,6 +124,17 @@ namespace zuydGotcha.Controllers
             }
             return RedirectToAction("Index");
         }
+        [HttpPost]
+        [CheckAuth(Roles = "Admin,GameMasters")]
+        public ActionResult Delete(Game Model)
+        {
+            if (_GameService.Archive(Model.Id))
+            {
+                return RedirectToAction("Index");
+                
+            }
+            return View(Model);
+        }
 
         [HttpGet]
         public ActionResult Contract(int UserId, int GameId)
@@ -164,11 +175,12 @@ namespace zuydGotcha.Controllers
         [CheckAuth(Roles = "Player")]
         public ActionResult Eliminate(int id)
         {
-            // dit is nog niet geimplementeerd
-            //if (id != 0)
-            //{
-            //    _GameplayerContractService.EliminateByGamePlayerId(id);
-            //}
+
+            //dit is nog niet geimplementeerd
+            if (id != 0)
+            {
+                _GameplayerContractService.EliminateByGamePlayerId(id);
+            }
 
             return RedirectToAction("Index");
         }

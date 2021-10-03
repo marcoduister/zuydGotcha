@@ -128,10 +128,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccessController.cs" />
     <Compile Include="Controllers\GameController.cs" />
-    <Compile Include="Controllers\GametypeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\RulesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Controllers\GametypeController.cs" />
+    <Compile Include="Controllers\RulesController.cs" />
     <Compile Include="Controllers\WordSetController.cs" />
     <Compile Include="Controllers\WordsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -224,14 +224,6 @@
     <None Include="packages.config" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Users\Edit.cshtml" />
-    <Content Include="Views\Gametype\AddGametype.cshtml" />
-    <Content Include="Views\Gametype\EditGametype.cshtml" />
-    <Content Include="Views\Gametype\Index.cshtml" />
-    <Content Include="Views\Rules\AddRule.cshtml" />
-    <Content Include="Views\Rules\EditRule.cshtml" />
-    <Content Include="Views\Rules\OverviewRulesets.cshtml" />
-    <Content Include="Views\Rules\AddRuleset.cshtml" />
-    <Content Include="Views\Rules\EditRuleset.cshtml" />
     <Content Include="Views\Words\Index.cshtml" />
     <Content Include="Views\Words\Create.cshtml" />
     <Content Include="Views\Words\Edit.cshtml" />
@@ -247,6 +239,19 @@
     <Content Include="Views\Game\Contract.cshtml" />
     <Content Include="Views\Game\Details.cshtml" />
     <Content Include="Views\Game\Delete.cshtml" />
+    <Content Include="Views\Gametype\Index.cshtml" />
+    <Content Include="Views\Rules\Copy.cshtml" />
+    <Content Include="Views\Rules\Create.cshtml" />
+    <Content Include="Views\Rules\Delete.cshtml" />
+    <Content Include="Views\Rules\Details.cshtml" />
+    <Content Include="Views\Rules\Edit.cshtml" />
+    <Content Include="Views\Rules\Index.cshtml" />
+    <Content Include="Views\RuleSet\Copy.cshtml" />
+    <Content Include="Views\RuleSet\Create.cshtml" />
+    <Content Include="Views\RuleSet\Delete.cshtml" />
+    <Content Include="Views\RuleSet\Details.cshtml" />
+    <Content Include="Views\RuleSet\Edit.cshtml" />
+    <Content Include="Views\RuleSet\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Game\Create.cshtml" />

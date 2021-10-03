@@ -1,34 +1,154 @@
-﻿using System;
+﻿using BUSS.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Mvc;
-using System.Web.Security;
-using BUSS.Service;
-using zuydGotcha.Helper;
 using Models;
+using System.Web.Mvc;
+using zuydGotcha.Helper;
 
 namespace zuydGotcha.Controllers
 {
-    public class GametypeController : Controller    
+    public class GametypeController : Controller
     {
-        private GametypeService gametypeService = new GametypeService();
 
+        private GameTypeService GameTypeService = new GameTypeService();
+
+        // GET: GameType
+        [CheckAuth(Roles = "Admin,GameMasters")]
         public ActionResult Index()
         {
-            var gametypeList = gametypeService.GetAllGametypes();
+            var GameList = GameTypeService.GetAllGameType();
 
-            return View(gametypeList);
+            return View(GameList);
         }
 
-        // GET: Gametype
-        public ActionResult AddGametype()
+        // GET: GameType/Details/5
+        [CheckAuth(Roles = "Admin,GameMasters")]
+        public ActionResult Details(int id)
+        {
+            var Model = GameTypeService.GetGameTypeById(id);
+            if (Model == null)
+            {
+                RedirectToAction("Index");
+            }
+
+            return View(Model);
+        }
+
+        // GET: GameType/Create
+        [CheckAuth(Roles = "Admin,GameMasters")]
+        public ActionResult Create()
         {
             return View();
         }
 
-        public ActionResult EditGametype()
+        // POST: GameType/Create
+        [HttpPost]
+        [CheckAuth(Roles = "Admin,GameMasters")]
+        public ActionResult Create(GameType Model)
         {
+            if (ModelState.IsValid)
+            {
+                if (GameTypeService.CreateByModel(Model))
+                {
+                    RedirectToAction("Index");
+                }
+                else
+                {
+                    ModelState.AddModelError(nameof(Model.GameType_Name), "Er is iets fout gegaan probeer het later op nieuw");
+                }
+            }
+
+            return View(Model);
+        }
+
+        // GET: GameType/Edit/5
+        [CheckAuth(Roles = "Admin,GameMasters")]
+        public ActionResult Edit(int id)
+        {
+            var Model = GameTypeService.GetGameTypeById(id);
+            if (Model == null)
+            {
+               RedirectToAction("Index");
+            }
+
+            return View(Model);
+        }
+
+        // POST: GameType/Edit/5
+        [HttpPost]
+        [CheckAuth(Roles = "Admin,GameMasters")]
+        public ActionResult Edit(GameType Model)
+        {
+            if (ModelState.IsValid)
+            {
+                if (GameTypeService.EditByModel(Model))
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ModelState.AddModelError(nameof(Model.GameType_Name), "Er is iets fout gegaan probeer het later op nieuw");
+                }
+            }
+
+            return View(Model);
+        }
+
+        // GET: GameType/Delete/5
+        [CheckAuth(Roles = "Admin,GameMasters")]
+        public ActionResult Delete(int id)
+        {
+            var Model = GameTypeService.GetGameTypeById(id);
+            if (Model == null)
+            {
+                RedirectToAction("Index");
+            }
+
+            return View(Model);
+        }
+
+        // POST: Words/Delete/5
+        [HttpPost]
+        [CheckAuth(Roles = "Admin,GameMasters")]
+        public ActionResult Delete(GameType Model)
+        {
+            if (GameTypeService.DeleteByModel(Model))
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ModelState.AddModelError(nameof(Model.GameType_Name), "Er is iets fout gegaan probeer het later op nieuw");
+            }
+            return View();
+        }
+
+        [CheckAuth(Roles = "Admin,GameMasters")]
+        public ActionResult Copy(int id)
+        {
+            var Model = GameTypeService.GetGameTypeById(id);
+            if (Model == null)
+            {
+                RedirectToAction("Index");
+            }
+
+            return View(Model);
+        }
+
+        [HttpPost]
+        [CheckAuth(Roles = "Admin,GameMasters")]
+        public ActionResult Copy(GameType Model)
+        {
+            if (GameTypeService.CopyByModel(Model))
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ModelState.AddModelError(nameof(Model.GameType_Name), "Er is iets fout gegaan probeer het later op nieuw");
+            }
             return View();
         }
     }

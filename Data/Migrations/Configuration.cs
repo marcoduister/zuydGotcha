@@ -18,11 +18,19 @@ namespace Data.Migrations
         {
             var User = new List<User>
             {
-                new User{Email="Marcoduister@hotmail.com", Password="Qwerty", User_Rol= Enums.Rolen.Admin, UserActive =true},
-                new User{Email="Eva@hotmail.com", Password="Qwerty",User_Rol= Enums.Rolen.Admin, UserActive =true},
-                new User{Email="Julean@hotmail.com", Password="Qwerty",User_Rol= Enums.Rolen.Gamemaster, UserActive =true},
-                new User{Email="Rick@hotmail.com", Password="Qwerty",User_Rol= Enums.Rolen.Player, UserActive =true},
-                new User{Email="Broertje@hotmail.com",Password="Qwerty",User_Rol= Enums.Rolen.Player, UserActive =true},
+                new User{Email="marco@hotmail.com", Password="Qwerty", User_Rol= Enums.Rolen.Admin, UserActive =true},
+                new User{Email="eva@hotmail.com", Password="Qwerty",User_Rol= Enums.Rolen.Admin, UserActive =true},
+                new User{Email="julean@hotmail.com", Password="Qwerty",User_Rol= Enums.Rolen.Gamemaster, UserActive =true},
+                new User{Email="rick@hotmail.com", Password="Qwerty",User_Rol= Enums.Rolen.Player, UserActive =true},
+                new User{Email="broertje@hotmail.com",Password="Qwerty",User_Rol= Enums.Rolen.Player, UserActive =true},
+                new User{Email="arturo@hotmail.com", Password="Qwerty",User_Rol= Enums.Rolen.Gamemaster, UserActive =true},
+                new User{Email="gytis@hotmail.com", Password="Qwerty",User_Rol= Enums.Rolen.Player, UserActive =true},
+                new User{Email="yan@hotmail.com",Password="Qwerty",User_Rol= Enums.Rolen.Player, UserActive =true},
+                new User{Email="peggy@hotmail.com",Password="Qwerty",User_Rol= Enums.Rolen.Player, UserActive =true},
+                new User{Email="laura@hotmail.com",Password="Qwerty",User_Rol= Enums.Rolen.Player, UserActive =true},
+                new User{Email="nino@hotmail.com",Password="Qwerty",User_Rol= Enums.Rolen.Player, UserActive =true },
+                new User{Email="miel@hotmail.com",Password="Qwerty",User_Rol= Enums.Rolen.Admin, UserActive =true},
+                new User{Email="bob@hotmail.com",Password="Qwerty",User_Rol= Enums.Rolen.Admin, UserActive =true }
             };
             var account = new List<Account>
             {
@@ -31,6 +39,14 @@ namespace Data.Migrations
                 new Account{ User_Id =3, FirstName="julean",LastName="hommel", Alias="julan", Group="A1B1", Residence="maastricht", Birthdate=DateTime.Parse("1999-02-12") },
                 new Account{ User_Id =4, FirstName="Rick",LastName="hooi", Alias="Rickert", Group="A1B1", Residence="simpeveld", Birthdate=DateTime.Parse("1999-05-25") },
                 new Account{ User_Id =5, FirstName="broertje",LastName="hooi", Alias="liveanjiolo", Group="A1B1", Residence="heerlen", Birthdate=DateTime.Parse("1990-05-25") },
+                new Account{ User_Id =6, FirstName="Arturo",LastName="Last6", Alias="NickName", Group="A1B1", Residence="kerkrade", Birthdate=DateTime.Parse("1996-05-25") },
+                new Account{ User_Id =7, FirstName="Gytis",LastName="Last7", Alias="NickName", Group="A1B1", Residence="kerkrade", Birthdate=DateTime.Parse("1994-08-15") },
+                new Account{ User_Id =8, FirstName="Yan",LastName="Last8", Alias="NickName", Group="A1B1", Residence="maastricht", Birthdate=DateTime.Parse("1999-02-12") },
+                new Account{ User_Id =9, FirstName="Peggy",LastName="Last9", Alias="NickName", Group="A1B1", Residence="simpeveld", Birthdate=DateTime.Parse("1999-05-25") },
+                new Account{ User_Id =10, FirstName="Laura",LastName="Last10", Alias="NickName", Group="A1B1", Residence="heerlen", Birthdate=DateTime.Parse("1990-05-25") },
+                new Account{ User_Id =11, FirstName="Nino",LastName="Last11", Alias="NickName", Group="A1B1", Residence="heerlen", Birthdate=DateTime.Parse("1990-05-25") },
+                new Account{ User_Id =12, FirstName="miel",LastName="Noelanders", Alias="miel", Group="A1B1", Residence="hasselt", Birthdate=DateTime.Parse("1990-05-25") },
+                new Account{ User_Id =13, FirstName="bob",LastName="Tossaint", Alias="bob", Group="A1B1", Residence="maastricht", Birthdate=DateTime.Parse("1990-05-25") },
             };
             var worden = new List<Word>
             {
@@ -67,10 +83,16 @@ namespace Data.Migrations
             };
             var gameplayers = new List<GamePlayer>
             {
-                new GamePlayer{ User_Id =1, Active= false, Game_Id=1 },
                 new GamePlayer{ User_Id =2, Active= false, Game_Id=1 },
                 new GamePlayer{ User_Id =3, Active= false, Game_Id=1 },
-                new GamePlayer{ User_Id =4, Active= false, Game_Id=1 }
+                new GamePlayer{ User_Id =4, Active= false, Game_Id=1 },
+                new GamePlayer{ User_Id =5, Active= false, Game_Id=1 },
+                new GamePlayer{ User_Id =6, Active= false, Game_Id=1 },
+                new GamePlayer{ User_Id =7, Active= false, Game_Id=1 },
+                new GamePlayer{ User_Id =8, Active= false, Game_Id=1 },
+                new GamePlayer{ User_Id =9, Active= false, Game_Id=1 },
+                new GamePlayer{ User_Id =10, Active= false, Game_Id=1 },
+                new GamePlayer{ User_Id =11, Active= false, Game_Id=1 },
             };
 
 

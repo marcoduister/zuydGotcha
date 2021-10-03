@@ -1,0 +1,49 @@
+﻿@model Models.WordSet
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>WordSet</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.WordSet_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WordSet_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WordSet_public)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WordSet_public)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Maker_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Maker_Id)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @if (Model.Maker_Id.ToString() == Session["UserID"].ToString())
+    {
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+    }
+    else
+    {
+        @Html.ActionLink("Kopier", "Copy", new { id = Model.Id })
+    }
+    @Html.ActionLink("Terug", "Index")
+</p>
