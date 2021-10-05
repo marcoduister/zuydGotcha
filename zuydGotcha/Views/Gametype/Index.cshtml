@@ -1,16 +1,16 @@
 ﻿@model IEnumerable<Models.GameType>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "SpelType Overzicht";
 }
 
-<h2>Index</h2>
+<h2>SpelType Overzicht</h2>
 
 
 @if (Session["UserRole"].ToString() == Models.Enums.Rolen.Admin.ToString())
 {
 <p>
-    <button type="button" class="btn btn-success btn-sm">GameType aanmaken</button>
+    <button type="button" class="btn btn-success btn-sm">SpelType aanmaken</button>
 </p>
 }
 

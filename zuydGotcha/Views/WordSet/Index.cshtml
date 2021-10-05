@@ -1,16 +1,10 @@
 ﻿@model IEnumerable<Models.WordSet>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "WoordenSet Overzicht";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-
-
+<h2>WoordenSet Overzicht</h2>
 
 
     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -64,7 +58,7 @@
 <div class="tab-pane fade" id="pills-Own" role="tabpanel" aria-labelledby="pills-Own-tab">
 
     <p>
-        @Html.ActionLink("WordSet Aanmaken", "Create", null, new { @class = "btn btn-success" })
+        @Html.ActionLink("WoordenSet aanmaken", "Create", null, new { @class = "btn btn-success" })
     </p>
 
 

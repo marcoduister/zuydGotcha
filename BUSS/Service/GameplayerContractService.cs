@@ -40,46 +40,55 @@ namespace BUSS.Service
 
             if (DBContext.Games.Any(e => e.Id == Id))
             {
-                Game currentGame = DBContext.Games.First(e => e.Id == Id);
-                currentGame.Game_Start = DateTime.Now;
-
-                List<GamePlayer> players = DBContext.GamePlayers.Where(e => e.Game_Id == Id).OrderBy(r => Guid.NewGuid()).ToList();
-                List<WordSet> Wordset = new List<WordSet>();
-                if (currentGame.WordSet_Id != null || currentGame.WordSet_Id != 0)
+                try
                 {
-                    Wordset = DBContext.WordSets.Where(e =>e.Id == Id).Include(e=>e.Word).OrderBy(r => Guid.NewGuid()).ToList();
+                    Game currentGame = DBContext.Games.First(e => e.Id == Id);
+                    currentGame.Game_Start = DateTime.Now;
+
+                    List<GamePlayer> players = DBContext.GamePlayers.Where(e => e.Game_Id == Id).OrderBy(r => Guid.NewGuid()).ToList();
+                    List<WordSet> Wordset = new List<WordSet>();
+                    if (currentGame.WordSet_Id != null || currentGame.WordSet_Id != 0)
+                    {
+                        Wordset = DBContext.WordSets.Where(e => e.Id == Id).Include(e => e.Word).OrderBy(r => Guid.NewGuid()).ToList();
+                    }
+
+                    List<Contract> GameContracts = new List<Contract>();
+                    int playerscount = 0;
+                    foreach (var item in players)
+                    {
+                        playerscount += 1;
+                        Contract tempContract = new Contract()
+                        {
+                            Game_Id = item.Game_Id,
+                            Eliminator_Id = item.Id,
+
+                        };
+                        if (currentGame.WordSet_Id != null)
+                        {
+                            //tempContract.Word_Id = Wordset.OrderBy(r => Guid.NewGuid()).First().Id;
+                        }
+                        if (players.Count() == playerscount)
+                        {
+                            tempContract.Eliminate_Id = players.First().Id;
+                        }
+                        else
+                        {
+                            tempContract.Eliminate_Id = players[playerscount].Id;
+                        }
+                        GameContracts.Add(tempContract);
+                    }
+
+                    DBContext.Contracts.AddRange(GameContracts);
+
+                    DBContext.SaveChanges();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+
+                    return false;
                 }
                 
-                List<Contract> GameContracts = new List<Contract>();
-                int playerscount = 0;
-                foreach (var item in players)
-                {
-                    playerscount += 1;
-                    Contract tempContract = new Contract()
-                    {
-                        Game_Id = item.Game_Id,
-                        Eliminator_Id = item.User_Id,
-
-                    };
-                    if (currentGame.WordSet_Id != null)
-                    {
-                        //tempContract.Word_Id = Wordset.OrderBy(r => Guid.NewGuid()).First().Id;
-                    }
-                    if (players.Count() == playerscount)
-                    {
-                        tempContract.Eliminate_Id = players.First().User_Id;
-                    }
-                    else
-                    {
-                        tempContract.Eliminate_Id = players[playerscount].User_Id;
-                    }
-                    GameContracts.Add(tempContract);
-                }
-
-                DBContext.Contracts.AddRange(GameContracts);
-
-                DBContext.SaveChanges();
-                return true;
             }
             else
             {

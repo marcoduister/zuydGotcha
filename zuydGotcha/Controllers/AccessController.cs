@@ -17,6 +17,7 @@ namespace zuydGotcha.Controllers
 
 
         // GET: Access/Login
+        [AllowAnonymous]
         public ActionResult Login()
         {
             if (!Request.IsAuthenticated)
@@ -31,6 +32,7 @@ namespace zuydGotcha.Controllers
 
         // POST: Access/Login
         [HttpPost]
+        [AllowAnonymous]
         public ActionResult Login(LoginViewModel user)
         {
             if (ModelState.IsValid)
@@ -66,6 +68,7 @@ namespace zuydGotcha.Controllers
 
         // POST: Access/Register
         [HttpPost]
+        [AllowAnonymous]
         public ActionResult Register(RegisterViewModel NewUser)
         {
             if (ModelState.IsValid)
@@ -110,6 +113,7 @@ namespace zuydGotcha.Controllers
 
         // GET: Access/PasswordReset
         [HttpGet]
+        [AllowAnonymous]
         public ActionResult PasswordReset()
         {
             return View();
@@ -117,6 +121,7 @@ namespace zuydGotcha.Controllers
 
         // POST: Access/PasswordReset
         [HttpPost]
+        [AllowAnonymous]
         public ActionResult PasswordReset(User user)
         {
             if (ModelState.IsValid)

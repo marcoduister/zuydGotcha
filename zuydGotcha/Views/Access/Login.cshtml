@@ -28,6 +28,14 @@
         color: inherit;
         cursor: pointer
     }
+    .container {
+        height: 100%;
+    }
+
+    .container .btn-holder {
+        position: relative;
+        top: 70%;
+    }
 
     .bg-blue {
         color: #fff;
@@ -39,8 +47,8 @@
 
 <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
     <div class="card card0 border-0">
-        <div class="row d-flex">
-            <div class="col-lg-6">
+        <div class="row d-flex bg-light">
+            <div class="col-lg-6 ">
                 <div class="card2 card bg-light border-0 px-4 py-5">
                     <h3>Login</h3>
                     @using (Html.BeginForm("Login", "Access", FormMethod.Post))
@@ -59,21 +67,23 @@
 
                         //@Html.ValidationMessageFor(model => model., "Invalid message")
 
-                        <button type="submit" class="btn btn-primary align-bottom">Login</button>
+                        <button type="submit" class="btn btn-primary form-control">Login</button>
                     }
                 </div>
             </div>
             <div class="col-lg-6" >
-                <div class="card2 card h-100 bg-light border-0 px-4 py-5 ">
-                    <label>Heeft u nog geen account, maakt dan vandaag nog eentje aan en doe mee!!!</label>
-                    @Html.ActionLink("Registreren", "Register", "Access", null, new { @class = "btn btn-primary" })
-                </div>
+                    <div class="container card2 card bg-light border-0 px-4 py-5">
+                        <div class="btn-holder">
+                            <label>Heeft u nog geen account, maakt dan vandaag nog eentje aan en doe mee!!!</label>
+                            @Html.ActionLink("Registreren", "Register", "Access", null, new { @class = "btn btn-primary form-control" })
+                        </div>
+                    </div>
             </div>
         </div>
 
-        <div class="bg-blue py-4">
+        <div class=" row d-flex bg-blue py-4">
             <div class="row px-3">
-                <a href="~/Access/PasswordReset" class="ml-auto mb-0 text-sm text-center">komt uw niet uw account ? heeft je je wachtwoord vergeten klik dan hier </a>
+                <a href="~/Access/PasswordReset" class="ml-auto mb-0 text-sm text-center">komt u niet in uw account ? klik dan hier </a>
             </div>
         </div>
     </div>
