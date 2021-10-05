@@ -82,7 +82,7 @@
                                     <div class="mb-1">
                                         <div class="row">
                                             <div class="col">
-                                                <label class="form-label">Geborten datum</label>
+                                                <label class="form-label">Geboortedatum</label>
 
                                                 @Html.TextBoxFor(m => m.Birthdate, new { @class = "form-control", @Type = "Date", @id = "start", @name = "trip-start" })
                                                 @Html.ValidationMessageFor(m => m.Birthdate, "", new { @class = "text-danger" })
@@ -94,7 +94,7 @@
                                 <div class="col-sm">
 
                                     <div class="mb-1">
-                                        <label class="form-label">Email Adress</label>
+                                        <label class="form-label">Email-adres</label>
                                         @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
                                         @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
 
@@ -107,7 +107,7 @@
                                                 @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                                             </div>
                                             <div class="col">
-                                                <label class="form-label">Herhaal wachtwoord</label>
+                                                <label class="form-label">Herhaal Wachtwoord</label>
                                                 @Html.TextBoxFor(m => m.PasswordCheck, new { @class = "form-control", @type = "password" })
                                                 @Html.ValidationMessageFor(m => m.PasswordCheck, "", new { @class = "text-danger" })
                                             </div>
@@ -132,7 +132,7 @@
 
         <div class="bg-blue py-4">
             <div class="row px-3">
-                <a href="/Access/PasswordReset" class="ml-auto mb-0 text-sm text-center">komt u niet in uw account ? klik dan hier  </a>
+                <a href="/Access/PasswordReset" class="ml-auto mb-0 text-sm text-center">Kan u niet inloggen of bent u uw wachtwoord vergeten, klik dan hier.</a>
 
             </div>
         </div>
