@@ -158,9 +158,10 @@
                         @Html.DisplayFor(modelItem => item.User.Account.Residence)
                     </td>
                     <td>
-                        @Html.ActionLink("Contract", "Contract", new { UserId = item.User_Id, GameId = item.Game_Id }) |
-                        @Html.ActionLink("Profile", "Profile", new { id = item.Id }) |
-                        @Html.ActionLink("Verwijder", "Delete", new { id = item.Id })
+                        @Html.ActionLink("Contract", "Contract", new { UserId = item.User_Id, GameId = item.Game_Id },new { @class = "btn btn-success btn-sm" })
+                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#_Modal"> Profile </button>
+                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#_Modal"> Verwijderen </button>
+
                     </td>
                 </tr>
             }

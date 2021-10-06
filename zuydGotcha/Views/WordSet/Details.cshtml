@@ -39,7 +39,7 @@
 <p>
     @if (Model.Maker_Id.ToString() == Session["UserID"].ToString())
     {
-        @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+        @Html.ActionLink("Bewerken", "Edit", new { id = Model.Id })
     }
     else
     {

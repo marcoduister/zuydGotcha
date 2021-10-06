@@ -1,17 +1,10 @@
 ﻿@model IEnumerable<Models.RuleSet>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Overzicht Regellijsten";
 }
 
 <h2>Overzicht Regellijsten</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-
-
-
 
     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
         <li class="nav-item" role="presentation">
@@ -27,7 +20,7 @@
             <table class="table">
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.WordSet_Name)
+                        Regel
                     </th>
                     <th>
                         Beschrijving
@@ -38,22 +31,21 @@
                     <th></th>
                 </tr>
 
-                @foreach (var item in Model.Where(e => e.WordSet_public == true && e.Maker_Id.ToString() != Session["UserID"].ToString()))
+                @foreach (var item in Model.Where(e => e.RuleSet_public == true && e.Maker_Id.ToString() != Session["UserID"].ToString()))
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.WordSet_Name)
+                            @Html.DisplayFor(modelItem => item.RuleSet_Name)
                         </td>
                         <td>
                             Beschrijving
                         </td>
                         <td>
-                            Maker
-                            @*@Html.DisplayFor(modelItem => item.Maker_Id)*@
+                            @Html.DisplayFor(modelItem => item.User.Account.LastName)
                         </td>
                         <td>
-                            @Html.ActionLink("Inzien", "Details", new { id = item.Id }) |
-                            @Html.ActionLink("Kopier", "Copy", new { id = item.Id })
+                            @Html.ActionLink("Inzien", "Details", new { id = item.Id }, new { @class = "btn btn-info btn-sm" })
+                            @Html.ActionLink("Kopier", "Copy", new { id = item.Id }, new { @class = "btn btn-info btn-sm" })
                         </td>
                     </tr>
                  }
@@ -64,14 +56,14 @@
 <div class="tab-pane fade" id="pills-Own" role="tabpanel" aria-labelledby="pills-Own-tab">
 
     <p>
-        @Html.ActionLink("WordSet Aanmaken", "Create", null, new { @class = "btn btn-success" })
+        @Html.ActionLink("RegelSet Aanmaken", "Create", null, new { @class = "btn btn-success" })
     </p>
 
 
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.WordSet_Name)
+                RegelSetNaam
             </th>
             <th>
                 Beschrijving
@@ -86,18 +78,18 @@
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.WordSet_Name)
+                        @Html.DisplayFor(modelItem => item.RuleSet_Name)
                     </td>
                     <td>
 
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.WordSet_public)
+                        @Html.DisplayFor(modelItem => item.RuleSet_public)
                     </td>
                     <td>
-                        @Html.ActionLink("Bewerken", "Edit", new { id = item.Id }) |
-                        @Html.ActionLink("Inzien", "Details", new { id = item.Id }) |
-                        @Html.ActionLink("Verwijderen", "Delete", new { id = item.Id })
+                        @Html.ActionLink("Bewerken", "Edit", new { id = item.Id }, new { @class = "btn btn-success btn-sm" })
+                        @Html.ActionLink("Inzien", "Details", new { id = item.Id }, new { @class = "btn btn-info btn-sm" })
+                        @Html.ActionLink("Verwijderen", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
                     </td>
                 </tr>
             }

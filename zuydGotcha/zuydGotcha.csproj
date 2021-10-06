@@ -254,6 +254,7 @@
     <Content Include="Views\RuleSet\Details.cshtml" />
     <Content Include="Views\RuleSet\Edit.cshtml" />
     <Content Include="Views\RuleSet\Index.cshtml" />
+    <Content Include="Views\Shared\_modal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Game\Create.cshtml" />

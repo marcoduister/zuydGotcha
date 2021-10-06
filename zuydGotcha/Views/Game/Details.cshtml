@@ -50,7 +50,51 @@
                         Html.RenderAction("ContractPartial", "Game", new { id = Model.Id });
                     }
                     <hr />
+            }
+            else
+            {
+            <table class="table">
+                <tr>
+                    <th>
+                        Voornaam
+                    </th>
+                    <th>
+                        Achternaam
+                    </th>
+                    <th>
+                        Email-adres
+                    </th>
+                    <th>
+                        Groep
+                    </th>
+                    <th>
+                        Woonplaats
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model.GamePlayers)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.User.Account.FirstName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.User.Account.LastName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.User.Account.Group)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.User.Account.Residence)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Contract", "Contract", new { UserId = item.User_Id, GameId = item.Game_Id }, new { @class = "btn btn-success btn-sm" })
+                        </td>
+                    </tr>
                 }
+            </table>
+            }
 
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
