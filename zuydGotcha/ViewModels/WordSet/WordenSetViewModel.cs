@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace zuydGotcha.ViewModels.WordSet
 {
-    public class WordenSetViewModel
+    public class WordenSetViewModel 
     {
         public int Id { get; set; }
 
