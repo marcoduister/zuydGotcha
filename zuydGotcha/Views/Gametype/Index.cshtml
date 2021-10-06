@@ -10,7 +10,7 @@
 @if (Session["UserRole"].ToString() == Models.Enums.Rolen.Admin.ToString())
 {
 <p>
-    <button type="button" class="btn btn-success btn-sm">Spelvariant Aanmaken</button>
+    <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#_Modal">Spelvariant Aanmaken</button>
 </p>
 }
 
@@ -43,9 +43,9 @@
             <td>
                 @if (Session["UserRole"].ToString() == Models.Enums.Rolen.Admin.ToString())
                 {
-                   <button type="button" class="btn btn-info btn-sm">Inzien</button>
-                   <button type="button" class="btn btn-success btn-sm">Bewerk</button>
-                   <button type="button" class="btn btn-info btn-sm">Verwijder</button>
+                    <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#_Modal"> Inzien </button>
+                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#_Modal"> Bewerk </button>
+                    <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#_Modal"> Verwijderen </button>
                 }
 
             </td>

@@ -36,11 +36,12 @@
                         @Html.DisplayFor(modelItem => item.Rule_Name)
                     </td>
                     <td>
-                        @*@Html.DisplayFor(modelItem => item.User.Account.FirstName +""+ item.User.Account.LastName)*@
+
+                        @Html.DisplayFor(modelItem => item.User.Account.LastName)
                     </td>
                     <td>
-                        @Html.ActionLink("Inzien", "Details", new { id = item.Id }) |
-                        @Html.ActionLink("Kopier", "Copy", new { id = item.Id })
+                        @Html.ActionLink("Inzien", "Details", new { id = item.Id }, new { @class = "btn btn-info btn-sm" })
+                        @Html.ActionLink("Kopier", "Copy", new { id = item.Id }, new { @class = "btn btn-info btn-sm" })
                     </td>
                 </tr>
             }
@@ -77,10 +78,9 @@
                             @Html.DisplayFor(modelItem => item.Rule_public)
                         </td>
                         <td>
-                            @Html.ActionLink("Bewerken", "Edit", new { id = item.Id }) |
-                            @Html.ActionLink("Inzien", "Details", new { id = item.Id }) |
-                            @Html.ActionLink("Verwijderen", "Delete", new { id = item.Id })
-                            <!-- Button trigger modal -->
+                            @Html.ActionLink("Bewerken", "Edit", new { id = item.Id }, new { @class = "btn btn-success btn-sm" })
+                            @Html.ActionLink("Inzien", "Details", new { id = item.Id }, new { @class = "btn btn-info btn-sm" })
+                            @Html.ActionLink("Verwijderen", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
 
                         </td>
                     </tr>

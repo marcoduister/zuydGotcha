@@ -47,7 +47,7 @@ namespace zuydGotcha.Controllers
 
         // GET: Users/Edit/1
         [HttpGet]
-        [CheckAuth(Roles = "Admin")]
+        [CheckAuth(Roles = "Admin,Player,Gamemaster")]
         public ActionResult Edit(int id)
         {
             EditUserViewModel ViewModel = new EditUserViewModel();
@@ -70,7 +70,7 @@ namespace zuydGotcha.Controllers
 
         // POST: Users/Edit/5
         [HttpPost]
-        [CheckAuth(Roles = "Admin,players,GameMasters")]
+        [CheckAuth(Roles = "Admin,Player,Gamemaster")]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(User Model)
         {
@@ -82,7 +82,6 @@ namespace zuydGotcha.Controllers
                 }
             }
             return View();
-
         }
 
         [HttpPost]
@@ -90,13 +89,11 @@ namespace zuydGotcha.Controllers
         {
             if (Request.Files.Count != 0)
             {
-
                 byte[] Profileimage = null;
                 int Id = int.Parse(formCollection["Id"]);
                 using (var Reader = new BinaryReader(Request.Files[0].InputStream))
                 {
                     Profileimage = Reader.ReadBytes(Request.Files[0].ContentLength);
-                    
                 }
                 if (Profileimage != null)
                 {
