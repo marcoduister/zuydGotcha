@@ -7,13 +7,8 @@ using System.Web.Mvc;
 
 namespace zuydGotcha.ViewModels.RuleSet
 {
-    public class RuleSetViewModel
+    public class RuleSetViewModel : Models.RuleSet
     {
-        public int Id { get; set; }
-
-        public string RuleSet_Name { get; set; }
-
-        public Boolean RuleSet_public { get; set; }
 
         public int[] SelectedIds { get; set; }
 

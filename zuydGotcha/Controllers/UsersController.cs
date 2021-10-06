@@ -9,7 +9,6 @@ using BUSS.Service;
 using zuydGotcha.Helper;
 using Models;
 using System.Data.Entity.Infrastructure;
-using zuydGotcha.ViewModels.User;
 
 namespace zuydGotcha.Controllers
 {
@@ -50,13 +49,8 @@ namespace zuydGotcha.Controllers
         [CheckAuth(Roles = "Admin,Player,Gamemaster")]
         public ActionResult Edit(int id)
         {
-            EditUserViewModel ViewModel = new EditUserViewModel();
-
             User user = _UserService.GetUserById(id);
            
-            // deze is momenteel niet in gebruik maak mapt wel viewmodel met user model
-            Mapper.Model(ViewModel, user);
-
             if (user != null)
             {
                 return View(user);

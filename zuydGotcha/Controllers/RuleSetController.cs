@@ -16,7 +16,7 @@ namespace zuydGotcha.Controllers
         private RuleSetService RuleSetService = new RuleSetService();
 
         // GET: RuleSets
-        [CheckAuth(Roles = "Admin,GameMasters")]
+        [CheckAuth(Roles = "Gamemaster,Admin")]
         public ActionResult Index()
         {
             var RulesetList = RuleSetService.GetAllRuleSets();
@@ -26,7 +26,7 @@ namespace zuydGotcha.Controllers
         }
 
         // GET: RuleSet/Details/5
-        [CheckAuth(Roles = "Admin,GameMasters")]
+        [CheckAuth(Roles = "Gamemaster,Admin")]
         public ActionResult Details(int id)
         {
             var Model = RuleSetService.GetRuleSetById(id);
@@ -39,7 +39,7 @@ namespace zuydGotcha.Controllers
         }
 
         // GET: RuleSet/Create
-        [CheckAuth(Roles = "Admin,GameMasters")]
+        [CheckAuth(Roles = "Gamemaster,Admin")]
         public ActionResult Create()
         {
             RuleSetViewModel model = new RuleSetViewModel();
@@ -55,7 +55,7 @@ namespace zuydGotcha.Controllers
 
         // POST: RuleSet/Create
         [HttpPost]
-        [CheckAuth(Roles = "Admin,GameMasters")]
+        [CheckAuth(Roles = "Gamemaster,Admin")]
         public ActionResult Create(RuleSetViewModel Model)
         {
             if (ModelState.IsValid)
@@ -77,7 +77,7 @@ namespace zuydGotcha.Controllers
         }
 
         // GET: RuleSet/Edit/5
-        [CheckAuth(Roles = "Admin,GameMasters")]
+        [CheckAuth(Roles = "Gamemaster,Admin")]
         public ActionResult Edit(int id)
         {
             RuleSetViewModel NewModel = new RuleSetViewModel();
@@ -97,7 +97,7 @@ namespace zuydGotcha.Controllers
 
         // POST: RuleSet/Edit/5
         [HttpPost]
-        [CheckAuth(Roles = "Admin,GameMasters")]
+        [CheckAuth(Roles = "Gamemaster,Admin")]
         public ActionResult Edit(RuleSetViewModel Model)
         {
             if (ModelState.IsValid)
@@ -122,7 +122,7 @@ namespace zuydGotcha.Controllers
         }
 
         // GET: RuleSet/Delete/5
-        [CheckAuth(Roles = "Admin,GameMasters")]
+        [CheckAuth(Roles = "Gamemaster,Admin")]
         public ActionResult Delete(int id)
         {
             var Model = RuleSetService.GetRuleSetById(id);
@@ -136,7 +136,7 @@ namespace zuydGotcha.Controllers
 
         // POST: RuleSet/Delete/5
         [HttpPost]
-        [CheckAuth(Roles = "Admin,GameMasters")]
+        [CheckAuth(Roles = "Gamemaster,Admin")]
         public ActionResult Delete(RuleSet Model)
         {
             if (RuleSetService.DeleteByModel(Model))
@@ -151,7 +151,7 @@ namespace zuydGotcha.Controllers
         }
 
         // Get: RuleSet/Copy/5
-        [CheckAuth(Roles = "Admin,GameMasters")]
+        [CheckAuth(Roles = "Gamemaster,Admin")]
         public ActionResult Copy(int id)
         {
 
@@ -166,7 +166,7 @@ namespace zuydGotcha.Controllers
 
         // POST: RuleSet/Copy/5
         [HttpPost]
-        [CheckAuth(Roles = "Admin,GameMasters")]
+        [CheckAuth(Roles = "Gamemaster,Admin")]
         public ActionResult Copy(RuleSet Model)
         {
             if (RuleSetService.CopyByModel(Model.Id))

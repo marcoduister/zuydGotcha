@@ -15,7 +15,7 @@ namespace zuydGotcha.Controllers
         private WordService WordService = new WordService();
 
         // GET: Words
-        [CheckAuth(Roles = "Admin,GameMasters")]
+        [CheckAuth(Roles = "Gamemaster,Admin")]
         public ActionResult Index()
         {
             var wordsetList = WordService.GetAllWord();
@@ -24,7 +24,7 @@ namespace zuydGotcha.Controllers
         }
 
         // GET: Words/Details/5
-        [CheckAuth(Roles = "Admin,GameMasters")]
+        [CheckAuth(Roles = "Gamemaster,Admin")]
         public ActionResult Details(int id)
         {
             var Model = WordService.GetWordById(id);
@@ -37,7 +37,7 @@ namespace zuydGotcha.Controllers
         }
 
         // GET: Words/Create
-        [CheckAuth(Roles = "Admin,GameMasters")]
+        [CheckAuth(Roles = "Gamemaster,Admin")]
         public ActionResult Create()
         {
             return View();
@@ -45,7 +45,7 @@ namespace zuydGotcha.Controllers
 
         // POST: Words/Create
         [HttpPost]
-        [CheckAuth(Roles = "Admin,GameMasters")]
+        [CheckAuth(Roles = "Gamemaster,Admin")]
         public ActionResult Create(Word Model)
         {
             if (ModelState.IsValid)
@@ -64,7 +64,7 @@ namespace zuydGotcha.Controllers
         }
 
         // GET: Words/Edit/5
-        [CheckAuth(Roles = "Admin,GameMasters")]
+        [CheckAuth(Roles = "Gamemaster,Admin")]
         public ActionResult Edit(int id)
         {
             var Model = WordService.GetWordById(id);
@@ -78,7 +78,7 @@ namespace zuydGotcha.Controllers
 
         // POST: Words/Edit/5
         [HttpPost]
-        [CheckAuth(Roles = "Admin,GameMasters")]
+        [CheckAuth(Roles = "Gamemaster,Admin")]
         public ActionResult Edit(Word Model)
         {
             if (ModelState.IsValid)
@@ -97,7 +97,7 @@ namespace zuydGotcha.Controllers
         }
 
         // GET: Words/Delete/5
-        [CheckAuth(Roles = "Admin,GameMasters")]
+        [CheckAuth(Roles = "Gamemaster,Admin")]
         public ActionResult Delete(int id)
         {
             var Model = WordService.GetWordById(id);
@@ -111,7 +111,7 @@ namespace zuydGotcha.Controllers
 
         // POST: Words/Delete/5
         [HttpPost]
-        [CheckAuth(Roles = "Admin,GameMasters")]
+        [CheckAuth(Roles = "Gamemaster,Admin")]
         public ActionResult Delete(Word Model)
         {
             if (WordService.DeleteByModel(Model))
@@ -125,7 +125,7 @@ namespace zuydGotcha.Controllers
             return View();
         }
 
-        [CheckAuth(Roles = "Admin,GameMasters")]
+        [CheckAuth(Roles = "Gamemaster,Admin")]
         public ActionResult Copy(int id)
         {
             var Model = WordService.GetWordById(id);
@@ -146,7 +146,7 @@ namespace zuydGotcha.Controllers
         }
 
         [HttpPost]
-        [CheckAuth(Roles = "Admin,GameMasters")]
+        [CheckAuth(Roles = "Gamemaster,Admin")]
         public ActionResult Copy(Word Model)
         {
             if (WordService.CopyByModel(Model))

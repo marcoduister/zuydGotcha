@@ -15,7 +15,7 @@ namespace zuydGotcha.Controllers
         private GameTypeService GameTypeService = new GameTypeService();
 
         // GET: GameType
-        [CheckAuth(Roles = "Admin,GameMasters")]
+        [CheckAuth(Roles = "Gamemaster,Admin")]
         public ActionResult Index()
         {
             var GameList = GameTypeService.GetAllGameType();
@@ -24,7 +24,7 @@ namespace zuydGotcha.Controllers
         }
 
         // GET: GameType/Details/5
-        [CheckAuth(Roles = "Admin,GameMasters")]
+        [CheckAuth(Roles = "Gamemaster,Admin")]
         public ActionResult Details(int id)
         {
             var Model = GameTypeService.GetGameTypeById(id);
@@ -37,7 +37,7 @@ namespace zuydGotcha.Controllers
         }
 
         // GET: GameType/Create
-        [CheckAuth(Roles = "Admin,GameMasters")]
+        [CheckAuth(Roles = "Gamemaster,Admin")]
         public ActionResult Create()
         {
             return View();
@@ -45,7 +45,7 @@ namespace zuydGotcha.Controllers
 
         // POST: GameType/Create
         [HttpPost]
-        [CheckAuth(Roles = "Admin,GameMasters")]
+        [CheckAuth(Roles = "Gamemaster,Admin")]
         public ActionResult Create(GameType Model)
         {
             if (ModelState.IsValid)
@@ -64,7 +64,7 @@ namespace zuydGotcha.Controllers
         }
 
         // GET: GameType/Edit/5
-        [CheckAuth(Roles = "Admin,GameMasters")]
+        [CheckAuth(Roles = "Gamemaster,Admin")]
         public ActionResult Edit(int id)
         {
             var Model = GameTypeService.GetGameTypeById(id);
@@ -78,7 +78,7 @@ namespace zuydGotcha.Controllers
 
         // POST: GameType/Edit/5
         [HttpPost]
-        [CheckAuth(Roles = "Admin,GameMasters")]
+        [CheckAuth(Roles = "Gamemaster,Admin")]
         public ActionResult Edit(GameType Model)
         {
             if (ModelState.IsValid)
@@ -97,7 +97,7 @@ namespace zuydGotcha.Controllers
         }
 
         // GET: GameType/Delete/5
-        [CheckAuth(Roles = "Admin,GameMasters")]
+        [CheckAuth(Roles = "Gamemaster,Admin")]
         public ActionResult Delete(int id)
         {
             var Model = GameTypeService.GetGameTypeById(id);
@@ -111,7 +111,7 @@ namespace zuydGotcha.Controllers
 
         // POST: Words/Delete/5
         [HttpPost]
-        [CheckAuth(Roles = "Admin,GameMasters")]
+        [CheckAuth(Roles = "Gamemaster,Admin")]
         public ActionResult Delete(GameType Model)
         {
             if (GameTypeService.DeleteByModel(Model))
@@ -125,7 +125,7 @@ namespace zuydGotcha.Controllers
             return View();
         }
 
-        [CheckAuth(Roles = "Admin,GameMasters")]
+        [CheckAuth(Roles = "Gamemaster,Admin")]
         public ActionResult Copy(int id)
         {
             var Model = GameTypeService.GetGameTypeById(id);
@@ -138,7 +138,7 @@ namespace zuydGotcha.Controllers
         }
 
         [HttpPost]
-        [CheckAuth(Roles = "Admin,GameMasters")]
+        [CheckAuth(Roles = "Gamemaster,Admin")]
         public ActionResult Copy(GameType Model)
         {
             if (GameTypeService.CopyByModel(Model))

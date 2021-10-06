@@ -133,10 +133,9 @@ namespace zuydGotcha.Controllers
         }
 
         [HttpGet]
-        [CheckAuth(Roles = "Admin,Gamemaster,Player")]
+        [CheckAuth(Roles = "Player,Gamemaster,Admin")]
         public ActionResult Logout()
         {
-            // Clear any lingering authencation data    
             FormsAuthentication.SignOut();
             Session.Abandon();
             return RedirectToAction("Index", "Home");

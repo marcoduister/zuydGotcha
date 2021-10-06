@@ -7,7 +7,6 @@ using System.Web;
 using System.Web.Mvc;
 using zuydGotcha.Helper;
 using zuydGotcha.ViewModels.Access;
-using zuydGotcha.ViewModels.User;
 
 namespace zuydGotcha.Controllers
 {
@@ -24,7 +23,7 @@ namespace zuydGotcha.Controllers
             return View(GameList);
         }
         [HttpGet]
-        [CheckAuth(Roles = "Admin,GameMasters")]
+        [CheckAuth(Roles = "Gamemaster,Admin")]
         public ActionResult Create()
         {
             Game Model = new Game();
@@ -36,7 +35,7 @@ namespace zuydGotcha.Controllers
         }
 
         [HttpPost]
-        [CheckAuth(Roles = "Admin,GameMasters")]
+        [CheckAuth(Roles = "Gamemaster,Admin")]
         public ActionResult Create(Game Model)
         {
             if (ModelState.IsValid)
@@ -50,12 +49,11 @@ namespace zuydGotcha.Controllers
                     ModelState.AddModelError(nameof(Model.Game_Name), "Er is iets fout gegaan probeer het later op nieuw");
                 }
             }
-
             return View(Model);
         }
 
         [HttpGet]
-        [CheckAuth(Roles = "Admin,GameMasters")]
+        [CheckAuth(Roles = "Gamemaster,Admin")]
         public ActionResult Edit(int id)
         {
             var Model = _GameService.GetGameById(id);
@@ -68,7 +66,7 @@ namespace zuydGotcha.Controllers
         }
 
         [HttpPost]
-        [CheckAuth(Roles = "Admin,GameMasters")]
+        [CheckAuth(Roles = "Gamemaster,Admin")]
         public ActionResult Edit(Game Model)
         {
             if (ModelState.IsValid)
@@ -87,7 +85,7 @@ namespace zuydGotcha.Controllers
         }
 
         [HttpGet]
-        [CheckAuth(Roles = "Admin,GameMasters,Player")]
+        [CheckAuth(Roles = "Player,Gamemaster,Admin")]
         public ActionResult Details(int id)
         {
             var model =_GameService.GetGameById(id);
@@ -99,6 +97,7 @@ namespace zuydGotcha.Controllers
         }
 
         [ChildActionOnly]
+        [CheckAuth(Roles = "Player,Gamemaster,Admin")]
         public ActionResult ContractPartial(int id)
         {
             int userid = int.Parse(Session["UserID"].ToString());
@@ -114,7 +113,7 @@ namespace zuydGotcha.Controllers
         }
 
         [HttpGet]
-        [CheckAuth(Roles = "Admin,GameMasters")]
+        [CheckAuth(Roles = "Gamemaster,Admin")]
         public ActionResult Delete(int id)
         {
             var model = _GameService.GetGameById(id);
@@ -125,7 +124,7 @@ namespace zuydGotcha.Controllers
             return RedirectToAction("Index");
         }
         [HttpPost]
-        [CheckAuth(Roles = "Admin,GameMasters")]
+        [CheckAuth(Roles = "Gamemaster,Admin")]
         public ActionResult Delete(Game Model)
         {
             if (_GameService.Archive(Model.Id))
@@ -137,6 +136,7 @@ namespace zuydGotcha.Controllers
         }
 
         [HttpGet]
+        [CheckAuth(Roles = "Player,Gamemaster,Admin")]
         public ActionResult Contract(int UserId, int GameId)
         {
             if (UserId != 0 && GameId != 0)
@@ -148,6 +148,7 @@ namespace zuydGotcha.Controllers
         }
 
         [HttpGet]
+        [CheckAuth(Roles = "Player,Gamemaster,Admin")]
         public ActionResult Join(int id)
         {
             if (id != 0)
@@ -161,7 +162,7 @@ namespace zuydGotcha.Controllers
         }
 
        [HttpGet]
-        [CheckAuth(Roles = "Admin,GameMasters")]
+        [CheckAuth(Roles = "Gamemaster,Admin")]
         public ActionResult Start(int id)
         {
             if (id != 0)
@@ -171,8 +172,9 @@ namespace zuydGotcha.Controllers
 
             return RedirectToAction("Index");
         }
+
         [HttpGet]
-        [CheckAuth(Roles = "Player")]
+        [CheckAuth(Roles = "Player,Gamemaster,Admin")]
         public ActionResult Eliminate(int id)
         {
 

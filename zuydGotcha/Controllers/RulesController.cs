@@ -15,7 +15,7 @@ namespace zuydGotcha.Controllers
         private RuleService RuleService = new RuleService();
 
         // GET: Rules
-        [CheckAuth(Roles = "Admin,GameMasters")]
+        [CheckAuth(Roles = "Gamemaster,Admin")]
         public ActionResult Index()
         {
             var RuleList = RuleService.GetAllRule();
@@ -24,7 +24,7 @@ namespace zuydGotcha.Controllers
         }
 
         // GET: Rules/Details/5
-        [CheckAuth(Roles = "Admin,GameMasters")]
+        [CheckAuth(Roles = "Gamemaster,Admin")]
         public ActionResult Details(int id)
         {
             var Model = RuleService.GetRuleById(id);
@@ -37,7 +37,7 @@ namespace zuydGotcha.Controllers
         }
 
         // GET: Rules/Create
-        [CheckAuth(Roles = "Admin,GameMasters")]
+        [CheckAuth(Roles = "Gamemaster,Admin")]
         public ActionResult Create()
         {
             return View();
@@ -45,7 +45,7 @@ namespace zuydGotcha.Controllers
 
         // POST: Rules/Create
         [HttpPost]
-        [CheckAuth(Roles = "Admin,GameMasters")]
+        [CheckAuth(Roles = "Gamemaster,Admin")]
         public ActionResult Create(Rule Model)
         {
             if (ModelState.IsValid)
@@ -64,7 +64,7 @@ namespace zuydGotcha.Controllers
         }
 
         // GET: Rules/Edit/5
-        [CheckAuth(Roles = "Admin,GameMasters")]
+        [CheckAuth(Roles = "Gamemaster,Admin")]
         public ActionResult Edit(int id)
         {
             var Model = RuleService.GetRuleById(id);
@@ -78,7 +78,7 @@ namespace zuydGotcha.Controllers
 
         // POST: Rules/Edit/5
         [HttpPost]
-        [CheckAuth(Roles = "Admin,GameMasters")]
+        [CheckAuth(Roles = "Gamemaster,Admin")]
         public ActionResult Edit(Rule Model)
         {
             if (ModelState.IsValid)
@@ -97,7 +97,7 @@ namespace zuydGotcha.Controllers
         }
 
         // GET: Rules/Delete/5
-        [CheckAuth(Roles = "Admin,GameMasters")]
+        [CheckAuth(Roles = "Gamemaster,Admin")]
         public ActionResult Delete(int id)
         {
             var Model = RuleService.GetRuleById(id);
@@ -111,7 +111,7 @@ namespace zuydGotcha.Controllers
 
         // POST: Rules/Delete/5
         [HttpPost]
-        [CheckAuth(Roles = "Admin,GameMasters")]
+        [CheckAuth(Roles = "Gamemaster,Admin")]
         public ActionResult Delete(Rule Model)
         {
             if (RuleService.DeleteByModel(Model))
@@ -126,7 +126,7 @@ namespace zuydGotcha.Controllers
         }
 
         //get Rules/copy/5
-        [CheckAuth(Roles = "Admin,GameMasters")]
+        [CheckAuth(Roles = "Gamemaster,Admin")]
         public ActionResult Copy(int id)
         {
             var Model = RuleService.GetRuleById(id);
@@ -136,18 +136,10 @@ namespace zuydGotcha.Controllers
             }
 
             return View(Model);
-
-            //dit is voor het implementeren van modal vanplaats een hele view
-            //ModalViewModel Model = new ModalViewModel();
-            //Model.ObjId = id;
-            //Model.Title = "RuleSet Kopieren";
-            //Model.Body = "Weet uw zekker dat uw deze wilt Kopieren!!!";
-
-            //return PartialView("~/Views/Shared/_Modal.cshtml", Model);
         }
 
         [HttpPost]
-        [CheckAuth(Roles = "Admin,GameMasters")]
+        [CheckAuth(Roles = "Gamemaster,Admin")]
         public ActionResult Copy(Rule Model)
         {
             if (RuleService.CopyByModel(Model))
