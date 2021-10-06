@@ -10,10 +10,10 @@
 
 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
     <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="pills-Game-tab" data-bs-toggle="pill" data-bs-target="#pills-Game" type="button" role="tab" aria-controls="pills-Game" aria-selected="true">Spell</button>
+        <button class="nav-link active" id="pills-Game-tab" data-bs-toggle="pill" data-bs-target="#pills-Game" type="button" role="tab" aria-controls="pills-Game" aria-selected="true">Spel</button>
     </li>
     <li class="nav-item" role="presentation">
-        <button class="nav-link" id="pills-Users-tab" data-bs-toggle="pill" data-bs-target="#pills-Users" type="button" role="tab" aria-controls="pills-Users" aria-selected="false">spellers</button>
+        <button class="nav-link" id="pills-Users-tab" data-bs-toggle="pill" data-bs-target="#pills-Users" type="button" role="tab" aria-controls="pills-Users" aria-selected="false">Spelers</button>
     </li>
 </ul>
 <div class="tab-content" id="pills-tabContent">
@@ -159,7 +159,7 @@
                     </td>
                     <td>
                         @Html.ActionLink("Contract", "Contract", new { UserId = item.User_Id, GameId = item.Game_Id },new { @class = "btn btn-success btn-sm" })
-                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#_Modal"> Profile </button>
+                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#_Modal"> Profiel </button>
                         <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#_Modal"> Verwijderen </button>
 
                     </td>
