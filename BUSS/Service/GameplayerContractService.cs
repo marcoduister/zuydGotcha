@@ -17,9 +17,11 @@ namespace BUSS.Service
         public List<Contract> GetGameContractById(int UserId,int GameId)
         {
 
+            
             if (DBContext.GamePlayers.Any(e => e.User_Id == UserId))
             {
-                List<Contract> player = DBContext.Contracts.Include(e=>e.GamePlayer_Eliminate).AsNoTracking().Where(e => e.Eliminator_Id == UserId && e.Game_Id == GameId).ToList();
+                int gameplayerId = DBContext.GamePlayers.First(e => e.User_Id == UserId && e.Game_Id == GameId).Id;
+                List<Contract> player = DBContext.Contracts.Include(e=>e.GamePlayer_Eliminate).AsNoTracking().Where(e => e.Eliminator_Id == gameplayerId && e.Game_Id == GameId).ToList();
                 foreach (var item in player)
                 {
                     if (item.Word_Id == null)

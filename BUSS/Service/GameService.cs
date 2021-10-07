@@ -96,10 +96,8 @@ namespace BUSS.Service
             }
             catch (Exception Ex)
             {
-
                 return false;
             }
-
         }
 
         public bool EditByModel(Game model)
@@ -123,7 +121,6 @@ namespace BUSS.Service
             }
             catch (Exception EX)
             {
-
                 return false;
             }
         }
@@ -142,7 +139,6 @@ namespace BUSS.Service
             }
             catch (Exception EX)
             {
-
                 return false;
             }
         }
